@@ -3,15 +3,19 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 import useSWR from 'swr';
 import { useEffect } from "react";
+import KlineChart from "../components/chart";
+import useGetMarcetplaceData from "../hooks/api/useGetMarcetplaceData";
 
 export interface IFirstPost{
     data:string
 }
 
 const FirstPost:React.FC<IFirstPost> = ({data}) => {
-    // const { data, error } = useSWR('/api/user', fetch);
+    useGetMarcetplaceData()
+
     useEffect(() => {
-        console.log(data)
+        // console.log('process.env.KRYPTO_KEY')
+        // console.log(process.env.NEXT_PUBLIC_KRYPTO_KEY)
     },[])
 
     return <Layout>
@@ -22,6 +26,7 @@ const FirstPost:React.FC<IFirstPost> = ({data}) => {
         <h2>
             <Link href="/">← Back to home</Link>
         </h2>
+        <KlineChart/>
     </Layout>
 }
 
