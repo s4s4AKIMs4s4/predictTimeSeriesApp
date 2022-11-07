@@ -11,7 +11,6 @@ export interface IFirstPost{
 }
 
 const FirstPost:React.FC<IFirstPost> = ({data}) => {
-    useGetMarcetplaceData()
 
     useEffect(() => {
         // console.log('process.env.KRYPTO_KEY')

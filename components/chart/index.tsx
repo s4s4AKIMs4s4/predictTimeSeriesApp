@@ -1,14 +1,16 @@
 import klinecharts from "klinecharts";
 import { useEffect, useLayoutEffect } from "react"
-import { generateDate } from "./date";
+import { MockCryptoData } from "../../mockData";
+import { generateCryptoDate } from "./date";
 import { generateChartStyle, typeGraphEnum } from "./style";
 
 const KlineChart:React.FC  = () => {
-    
+    // useGetMarcetplaceData()
     useLayoutEffect(() => {
         const chart = klinecharts.init(`${'chart'}`);
         chart.setStyleOptions(generateChartStyle(typeGraphEnum.AREA))
-        chart.applyNewData(generateDate());
+        generateCryptoDate()
+        chart.applyNewData(generateCryptoDate());
         
     })
     
