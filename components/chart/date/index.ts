@@ -30,6 +30,6 @@ export const generateCryptoDate = ():KLineData[] => {
         }
     })
 
-    console.log(testData)
+    // console.log(testData)
     return testData
 }

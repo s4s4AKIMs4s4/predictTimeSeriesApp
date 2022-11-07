@@ -10,8 +10,8 @@ export const computeSMA = (data, window_size) => {
             curr_avg += data[j]['close'] / window_size;
         }
         let sma = {
-            set: data.slice(i, i + window_size),
-            avg: curr_avg
+            set: data.slice(i, i + window_size).map((value) => value.close ),
+            avg: curr_avg   
         }
         r_avgs.push(sma);
         avg_prev = curr_avg;
@@ -20,7 +20,7 @@ export const computeSMA = (data, window_size) => {
 }
 
 
-const trainModel = async (model_params, callback) => {
+export const trainModel = async (model_params, callback) => {
     let inputs = model_params['inputs'];
     let outputs = model_params['outputs'];
     let trainingsize = model_params['input_trainingsize'];
@@ -41,9 +41,10 @@ const trainModel = async (model_params, callback) => {
 
     let X = inputs.slice(0, Math.floor(trainingsize / 100 * inputs.length));
     let Y = outputs.slice(0, Math.floor(trainingsize / 100 * outputs.length));
-    
+    console.log('X[0]')
+    console.log(X[0])
     console.log(X);
-    console.log(X.length + " " + X[0].length)
+    console.log(X.length + " " + X.length)
 
     const xs = tf.tensor2d(X, [X.length, X[0].length]).div(tf.scalar(10));
     const ys = tf.tensor2d(Y, [Y.length, 1]).reshape([Y.length, 1]).div(tf.scalar(10));
@@ -69,6 +70,9 @@ const trainModel = async (model_params, callback) => {
         optimizer: tf.train.adam(learning_rate),
         loss: 'meanSquaredError'
     });
+    console.log('x')
+    console.log(X)
+
     const hist = await model.fit(xs, ys,
         {
             batchSize: rnn_batch_size, epochs: n_epochs, callbacks: {

@@ -5,14 +5,17 @@ import useSWR from 'swr';
 import { useEffect } from "react";
 import KlineChart from "../components/chart";
 import useGetMarcetplaceData from "../hooks/api/useGetMarcetplaceData";
+import useRLNetwork from "../hooks/neraulNetwork/useRLNetwork";
 
 export interface IFirstPost{
     data:string
 }
 
 const FirstPost:React.FC<IFirstPost> = ({data}) => {
-
+    const {prepareDate,trainNetwork} = useRLNetwork()
     useEffect(() => {
+        trainNetwork()
+        // console.log(prepareDate())
         // console.log('process.env.KRYPTO_KEY')
         // console.log(process.env.NEXT_PUBLIC_KRYPTO_KEY)
     },[])
