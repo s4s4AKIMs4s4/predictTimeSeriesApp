@@ -13,8 +13,9 @@ export interface IFirstPost{
 
 const FirstPost:React.FC<IFirstPost> = ({data}) => {
     const {prepareDate,trainNetwork} = useRLNetwork()
+    // useGetMarcetplaceData()
     useEffect(() => {
-        trainNetwork()
+        // trainNetwork()
         // console.log(prepareDate())
         // console.log('process.env.KRYPTO_KEY')
         // console.log(process.env.NEXT_PUBLIC_KRYPTO_KEY)

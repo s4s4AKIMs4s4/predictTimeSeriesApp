@@ -1,5 +1,5 @@
 import { KLineData } from "klinecharts"
-import { MockCryptoData } from "../../../mockData"
+import { MockCryptoData,MochETHData } from "../../../mockData"
 
 export const generateCryptoDate = ():KLineData[] => {
     const serializeTime = (timeStr:string): {year:number, mounth:number, day:number} => {
@@ -10,7 +10,7 @@ export const generateCryptoDate = ():KLineData[] => {
         return {year, mounth, day}
 
     }
-    const cryptoEntyes = Object.entries( MockCryptoData["Time Series (Digital Currency Daily)"])
+    const cryptoEntyes = Object.entries( MochETHData["Time Series (Digital Currency Daily)"])
     const testData = cryptoEntyes.map(([timeStr,value]) => {
         const {year, mounth, day} = serializeTime(timeStr)
         

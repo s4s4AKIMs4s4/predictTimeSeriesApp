@@ -19,6 +19,7 @@ export const computeSMA = (data, window_size) => {
     return r_avgs;
 }
 
+export const maxValue = 4822
 
 export const trainModel = async (model_params, callback) => {
     let inputs = model_params['inputs'];
@@ -39,15 +40,15 @@ export const trainModel = async (model_params, callback) => {
     const output_layer_shape = rnn_output_neurons;
     const output_layer_neurons = 1;
 
-    let X = inputs.slice(0, Math.floor(trainingsize / 100 * inputs.length));
-    let Y = outputs.slice(0, Math.floor(trainingsize / 100 * outputs.length));
+    let X = inputs
+    let Y = outputs
     console.log('X[0]')
     console.log(X[0])
     console.log(X);
     console.log(X.length + " " + X.length)
 
-    const xs = tf.tensor2d(X, [X.length, X[0].length]).div(tf.scalar(10));
-    const ys = tf.tensor2d(Y, [Y.length, 1]).reshape([Y.length, 1]).div(tf.scalar(10));
+    const xs = tf.tensor2d(X, [X.length, X[0].length]).div(tf.scalar(maxValue));
+    const ys = tf.tensor2d(Y, [Y.length, 1]).reshape([Y.length, 1]).div(tf.scalar(maxValue));
     
     const model = tf.sequential();
     model.add(tf.layers.dense({ units: input_layer_neurons, inputShape: [input_layer_shape] }));
@@ -92,8 +93,8 @@ export const makePredictions = (X,model) => {
     //let X=this.inputs.slice(Math.floor(size/100 * inputs.length),inputs.length);
     console.table(X.length);
     console.log(String(X[0]).length)
-    const predictedResults = model.predict(tf.tensor2d(X,[X.length,X[0].length]).div(tf.scalar(10))).mul(10);
-    console.log(predictedResults.dataSync());
+    const predictedResults = model.predict(tf.tensor2d(X,[X.length,X[0].length]).div(tf.scalar(maxValue)));
+    console.log(predictedResults.dataSync() * maxValue);
     return Array.from(predictedResults.dataSync());
 }
 
