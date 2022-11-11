@@ -19,9 +19,22 @@ export const computeSMA = (data, window_size) => {
     return r_avgs;
 }
 
-export const maxValue = 4822
+export const getMaxThreshold = (data:Array<any>) => {
+    const coficentThreshold = 0.1
+    const maxStockObject = data.reduce((acc,currentValue, index) => {
+        const currentPrice = currentValue.close
+        const isMaxInTheEnd = data.length - index < 5 && currentPrice > acc
+        if(currentPrice > acc.maxPrice) return {maxPrice: currentPrice, isMaxInTheEnd}
+        else return {...acc}
+    },{maxPrice:0, isMaxInTheEnd:false})
+    if(maxStockObject.isMaxInTheEnd)
+        return maxStockObject.maxPrice + maxStockObject.maxPrice * coficentThreshold
+    else return maxStockObject.maxPrice
+}
 
-export const trainModel = async (model_params, callback) => {
+export const maxValue = 4822 + 4822 * 0.1
+
+export const trainModel = async (model_params, maxThreshold, callback) => {
     let inputs = model_params['inputs'];
     let outputs = model_params['outputs'];
     let trainingsize = model_params['input_trainingsize'];
@@ -47,8 +60,8 @@ export const trainModel = async (model_params, callback) => {
     console.log(X);
     console.log(X.length + " " + X.length)
 
-    const xs = tf.tensor2d(X, [X.length, X[0].length]).div(tf.scalar(maxValue));
-    const ys = tf.tensor2d(Y, [Y.length, 1]).reshape([Y.length, 1]).div(tf.scalar(maxValue));
+    const xs = tf.tensor2d(X, [X.length, X[0].length]).div(tf.scalar(maxThreshold));
+    const ys = tf.tensor2d(Y, [Y.length, 1]).reshape([Y.length, 1]).div(tf.scalar(maxThreshold));
     
     const model = tf.sequential();
     model.add(tf.layers.dense({ units: input_layer_neurons, inputShape: [input_layer_shape] }));
@@ -89,13 +102,14 @@ export const trainModel = async (model_params, callback) => {
 }
 
 
-export const makePredictions = (X,model) => {
+export const makePredictions = (X, model, maxThreshold) => {
     //let X=this.inputs.slice(Math.floor(size/100 * inputs.length),inputs.length);
     console.table(X.length);
     console.log(String(X[0]).length)
-    const predictedResults = model.predict(tf.tensor2d(X,[X.length,X[0].length]).div(tf.scalar(maxValue)));
+    const predictedResults = model.predict(tf.tensor2d(X,[X.length,X[0].length]).div(tf.scalar(maxThreshold)));
     console.log(predictedResults.dataSync() * maxValue);
-    return Array.from(predictedResults.dataSync());
+    // Array.from(predictedResults.dataSync());
+    return predictedResults.dataSync() * maxValue
 }
 
 

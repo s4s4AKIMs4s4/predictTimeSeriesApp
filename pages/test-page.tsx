@@ -2,24 +2,35 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import useSWR from 'swr';
-import { useEffect } from "react";
-import KlineChart from "../components/chart";
+import { useEffect, useState } from "react";
+import KlineChart, { ChartProps } from "../components/chart";
 import useGetMarcetplaceData from "../hooks/api/useGetMarcetplaceData";
 import useRLNetwork from "../hooks/neraulNetwork/useRLNetwork";
 
-export interface IFirstPost{
-    data:string
+export interface IFirstPost {
+    data: string
 }
 
-const FirstPost:React.FC<IFirstPost> = ({data}) => {
-    const {prepareDate,trainNetwork} = useRLNetwork()
+const FirstPost: React.FC<IFirstPost> = ({ data }) => {
+    const { prepareDate, trainNetwork, testComputeMax } = useRLNetwork()
     // useGetMarcetplaceData()
+    const [predictState, setPredictState] = useState<ChartProps>(
+        {
+            isPredicted: false,
+            predictedValue: 0,
+        }
+    )
     useEffect(() => {
-        // trainNetwork()
-        // console.log(prepareDate())
-        // console.log('process.env.KRYPTO_KEY')
-        // console.log(process.env.NEXT_PUBLIC_KRYPTO_KEY)
-    },[])
+        // testComputeMax()
+        // trainNetwork().then((predictValues:any) => {
+        //     console.log('predictValues')
+        //     console.log(predictValues)
+        //     setPredictState({
+        //         isPredicted:true,
+        //         predictedValue:predictValues
+        //     })
+        // }) 
+    }, [])
 
     return <Layout>
         <Head>
@@ -29,15 +40,16 @@ const FirstPost:React.FC<IFirstPost> = ({data}) => {
         <h2>
             <Link href="/">← Back to home</Link>
         </h2>
-        <KlineChart/>
+        {/* Provide compare function  to Kline  */}
+        <KlineChart {...{ ...predictState }} />
     </Layout>
 }
 
 export async function getStaticProps() {
-    const data = 'someData'  
+    const data = 'someData'
     return {
-      props: {data}
+        props: { data }
     }
-  }
+}
 
 export default FirstPost  

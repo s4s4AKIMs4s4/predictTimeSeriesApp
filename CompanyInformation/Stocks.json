@@ -1,0 +1,106 @@
+[
+    {
+        "ticker": "AAPL",
+        "projectName" : "Apple Inc."
+    },
+    {
+        "ticker": "MSFT",
+        "projectName":"Microsoft Corporation Common Stock"
+    },
+    {
+        "ticker": "GOOG",
+        "projectName": "Alphabet Inc. Class C Capital Stock"
+    },
+    {
+        "ticker": "GOOGL",
+        "projectName": "Alphabet Inc. Class A Common Stock"
+    },
+    {
+        "ticker": "AMZN",
+        "projectName": "Amazon.com, Inc. Common Stock"
+    },
+    {
+        "ticker": "BRK/A",
+        "projectName": "Berkshire Hathaway Inc."
+    },
+    {
+        "ticker": "BRK/B",
+        "projectName": "Berkshire Hathaway Inc."
+    },
+    {
+        "ticker": "TSLA",
+        "projectName": "Tesla, Inc. Common Stock"
+    },
+    {
+        "ticker": "UNH",
+        "projectName": "UnitedHealth Group Incorporated Common Stock (DE)"
+    },
+    {
+        "ticker": "XOM",
+        "projectName": "Exxon Mobil Corporation Common Stock"
+    },
+    {
+        "ticker": "JNJ",
+        "projectName": "Johnson & Johnson Common Stock"
+    },
+    {
+        "ticker": "V",
+        "projectName": "Visa Inc"
+    },
+    {
+        "ticker": "NVDA",
+        "projectName": "NVIDIA Corporation"
+    },
+    {
+        "ticker": "JPM",
+        "projectName": "JP Morgan Chase & Co"
+    },
+    {
+        "ticker": "JNJ",
+        "projectName": "Johnson & Johnson Common Stock"
+    },
+    {
+        "ticker": "TSM",
+        "projectName": "Taiwan Semiconductor Manufacturing Company Ltd"
+    },
+    {
+        "ticker": "WMT",
+        "projectName": "Walmart Inc. Common Stock"
+    },
+    {
+        "ticker": "CVX",
+        "projectName": "Chevron Corporation Common Stock"
+    },
+    {
+        "ticker": "MA",
+        "projectName": "Mastercard Incorporated Common Stock"
+    },
+    {
+        "ticker": "PG",
+        "projectName": "Procter & Gamble Company"
+    },
+    {
+        "ticker": "LLY",
+        "projectName": "Eli Lilly and Company"
+    },
+    {
+        "ticker": "HD",
+        "projectName": "Home Depot, Inc."
+    },
+    {
+        "ticker": "BAC",
+        "projectName": "Bank of America Corporation"
+    },
+    {
+        "ticker": "META",
+        "projectName": "Meta Platforms, Inc."
+    },
+    {
+        "ticker": "PFE",
+        "projectName": "Pfizer, Inc. Common Stock"
+    },
+    {
+        "ticker": "KO",
+        "projectName": "Coca-Cola Company (The) Common Stock"
+    }
+]

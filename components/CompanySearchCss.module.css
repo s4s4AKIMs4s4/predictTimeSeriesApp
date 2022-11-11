@@ -1,0 +1,6 @@
+.searchCard {
+    max-width:100% !important;
+}
+.searchCard__actice{
+    background-color: gray;
+}
