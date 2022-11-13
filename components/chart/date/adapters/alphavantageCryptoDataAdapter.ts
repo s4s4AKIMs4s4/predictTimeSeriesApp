@@ -1,17 +1,12 @@
+import adapter from "./adapter"
+
 //TODO: fix any
-const alphavantageDataAdapter = (data:any) => {
-    const serializeTime = (timeStr:string): {year:number, mounth:number, day:number} => {
-        const arrayStringTime = timeStr.split('-')
-        const year = parseInt(arrayStringTime[0])
-        const mounth = parseInt(arrayStringTime[1])
-        const day = parseInt(arrayStringTime[2])
-        return {year, mounth, day}
-    }
+const alphavantageCryptoDataAdapter = (data:any) => {
+    const {serializeTime} = adapter()
 
     const cryptoEntyes = Object.entries( data["Time Series (Digital Currency Daily)"])
     return cryptoEntyes.map(([timeStr,value]) => {
         const {year, mounth, day} = serializeTime(timeStr)
-        
         const timestamp = new Date(year, mounth, day).getTime()
         
         const open = parseFloat(value['1b. open (USD)'])
@@ -28,4 +23,4 @@ const alphavantageDataAdapter = (data:any) => {
         }
     })
 }
-export  default alphavantageDataAdapter
+export  default alphavantageCryptoDataAdapter

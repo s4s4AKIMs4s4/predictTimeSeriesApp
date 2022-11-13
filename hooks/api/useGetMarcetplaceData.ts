@@ -1,13 +1,17 @@
 import { useEffect } from "react"
 import useSWR from "swr"
 import { MockCryptoData } from "../../mockData"
-import { TimeCryptoFunctionEnum } from "./apiModel"
+import { TimeCryptoFunctionEnum, TimeStockFunctionEnum } from "./apiModel"
 import { API, fetcher } from "./apiUtils"
 
-const useGetMarcetplaceData = (ticker:string) => {
-    console.log('ticker')
-    console.log(ticker)
-    const { data, error } = useSWR(`${API}?function=${TimeCryptoFunctionEnum.DAILY}&symbol=${ticker}&market=CNY&apikey=${process.env.NEXT_PUBLIC_KRYPTO_KEY}`, fetcher)
+const useGetMarcetplaceData = (ticker:string,isCrypro:boolean) => {
+    const pickApiForHandle = () => {
+        const cryptoApi = `${API}?function=${TimeCryptoFunctionEnum.DAILY}&symbol=${ticker}&market=CNY&apikey=${process.env.NEXT_PUBLIC_KRYPTO_KEY}`
+        const stockApi = `${API}?function=${TimeStockFunctionEnum.DAILY}&symbol=${ticker}&apikey=${process.env.NEXT_PUBLIC_KRYPTO_KEY}`
+        if(isCrypro) return cryptoApi
+        else return stockApi            
+    }
+    const { data, error } = useSWR(pickApiForHandle(), fetcher)
     
     return {
         data:data,

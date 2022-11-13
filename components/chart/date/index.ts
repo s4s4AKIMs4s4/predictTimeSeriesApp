@@ -1,10 +1,10 @@
 import { KLineData } from "klinecharts"
-import { MockCryptoData,MochETHData } from "../../../mockData"
-import alphavantageDataAdapter from "./adapters/alphavantageDataAdapter"
+import alphavantageCryptoDataAdapter from "./adapters/alphavantageCryptoDataAdapter"
+import alphavantageStockDataAdapter from "./adapters/alphavantageStockDataAdapter"
 
-export const generateCryptoDate = (data:any):KLineData[] => {
+export const generateChartDate = (data:any,isCrypro:boolean):KLineData[] => {
     if(data["Note"]) return null
     if(data["Error Message"]) return null
-    const normalizedData = alphavantageDataAdapter(data)
+    const normalizedData = isCrypro ? alphavantageCryptoDataAdapter(data) : alphavantageStockDataAdapter(data)
     return normalizedData
 }

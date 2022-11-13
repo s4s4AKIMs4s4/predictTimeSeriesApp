@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import TickerInputCss from './TickerInputCss.module.css'
 import ViewResults from "./ViewResults"
 import Stocks from "../CompanyInformation/Stocks.json"
+import useNavigate from "../hooks/useNavigate"
 
 
 export interface IStockCard {
@@ -15,9 +16,15 @@ const TickerInput: React.FC = () => {
     const [isOpenView, setIsOpenView] = useState<boolean>(false)
     const [searchedCompany, setSearchedCompany] = useState<string>('')
     const [stockCard, setStockCard] = useState<Array<IStockCard> | null>(null)
+    const {navigateToPredictPage} = useNavigate()
 
     useEffect(() => {
         const keyHandler = (e: KeyboardEvent) => {
+            if(e.key === 'Enter'){
+                const currentTicker = stockCard.find((value) => value.isActice).ticker
+                setIsOpenView(!isOpenView)
+                // navigateToPredictPage(currentTicker)
+            }
             if (e.key === 'ArrowDown') {
                 let activeIndex: null | number | undefined = null
                 const newStock = stockCard.map((value, index) => {
@@ -111,13 +118,18 @@ const TickerInput: React.FC = () => {
                 }
             })
         )
-
         setSearchedCompany(e.target.value)
     }
 
     return <div className={TickerInputCss.TickerInput}>
         <Input onChange={changeInput} placeholder='Enter Ticker or company name' />
-        <ViewResults isOpen={isOpenView} stockCard={stockCard} setStockCard={setStockCard} changeActiveElement={changeActiveElement} />
+        <ViewResults 
+            isOpen={isOpenView} 
+            stockCard={stockCard} 
+            setStockCard={setStockCard} 
+            changeActiveElement={changeActiveElement}
+            setIsOpenView = {setIsOpenView} 
+        />
     </div>
 }
 export default TickerInput

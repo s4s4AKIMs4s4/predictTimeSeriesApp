@@ -1,10 +1,13 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import TickerInput from '../components/TickerInput'
 import inputPage from './inputPage.module.css'
 import Link from "next/link";
+import { TickerContext } from '../Context/Models';
+import TickerProvider from '../Context/Providers/TickerProvider';
+import SearchView from '../components/SearchView';
 
-export default function Home() {
+export default function Home() {  
   return (
     <div className="container">
       <Head>
@@ -14,8 +17,11 @@ export default function Home() {
 
       <main className={inputPage.root}>
         <div className={inputPage.inputView}>
-          <TickerInput/>
-          <Link href={{ pathname: '/predict', query: { ticker: 'BTC' } }}>predict</Link>
+          <TickerProvider>
+            <SearchView/>
+              {/* <TickerInput />
+              <Link href={{ pathname: '/predict', query: { ticker: 'BTC' } }}>predict</Link> */}
+          </TickerProvider>
         </div>
       </main>
 

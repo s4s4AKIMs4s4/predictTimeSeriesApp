@@ -1,10 +1,11 @@
 import klinecharts, { Chart } from "klinecharts"
 import { useEffect, useRef, useState } from "react"
-import { generateCryptoDate } from "../components/chart/date"
+import { generateChartDate } from "../components/chart/date"
 import { createCircle } from "../components/chart/shapes/addShapes"
 import { generateTemplateCircle } from "../components/chart/shapes/circle"
 import { generateChartStyle, typeGraphEnum } from "../components/chart/style"
 import useGetMarcetplaceData from "./api/useGetMarcetplaceData"
+import Stocks from '../CompanyInformation/Stocks.json'
 
 export interface IDataChart {
     open: number,
@@ -17,11 +18,13 @@ export interface IDataChart {
 }
 
 const useKlineChart = (ticker:string) => {
-    const {data, isLoading} = useGetMarcetplaceData(ticker)
+    const isCrypro = useRef<boolean>(Stocks.find((value) => value.ticker === ticker).isCrypto)    
+    const {data, isLoading} = useGetMarcetplaceData(ticker, isCrypro.current)
     const [currentChartData, setCurrentChartData] = useState<Array<IDataChart>>([])
     const currentChartObj = useRef<Chart | null>(null)
 
     useEffect(() => {
+        if(isLoading) return 
         renderChart()
     },[isLoading])
 
@@ -36,11 +39,10 @@ const useKlineChart = (ticker:string) => {
         addToChartCircle(currentChartData.length, predictValue)
     }
     const renderChart = () => {
-        if(isLoading) return 
         const chart = klinecharts.init(`${'chart'}`);
         currentChartObj.current = chart
         chart.setStyleOptions(generateChartStyle(typeGraphEnum.AREA))
-        const Cdata = generateCryptoDate(data)
+        const Cdata = generateChartDate(data,isCrypro.current)
         setCurrentChartData(Cdata)
         
         chart.applyNewData(Cdata);
