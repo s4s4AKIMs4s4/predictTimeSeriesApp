@@ -107,9 +107,9 @@ export const makePredictions = (X, model, maxThreshold) => {
     console.table(X.length);
     console.log(String(X[0]).length)
     const predictedResults = model.predict(tf.tensor2d(X,[X.length,X[0].length]).div(tf.scalar(maxThreshold)));
-    console.log(predictedResults.dataSync() * maxValue);
+    console.log(predictedResults.dataSync() * maxThreshold);
     // Array.from(predictedResults.dataSync());
-    return predictedResults.dataSync() * maxValue
+    return predictedResults.dataSync() * maxThreshold
 }
 
 

@@ -1,106 +1,421 @@
 [
     {
         "ticker": "AAPL",
-        "projectName" : "Apple Inc."
+        "projectName" : "Apple Inc.",
+        "isCrypto": false
     },
     {
         "ticker": "MSFT",
-        "projectName":"Microsoft Corporation Common Stock"
+        "projectName":"Microsoft Corporation Common Stock",
+        "isCrypto": false
+
     },
     {
         "ticker": "GOOG",
-        "projectName": "Alphabet Inc. Class C Capital Stock"
+        "projectName": "Alphabet Inc. Class C Capital Stock",
+        "isCrypto": false
+
     },
     {
         "ticker": "GOOGL",
-        "projectName": "Alphabet Inc. Class A Common Stock"
+        "projectName": "Alphabet Inc. Class A Common Stock",
+        "isCrypto": false
+
     },
     {
         "ticker": "AMZN",
-        "projectName": "Amazon.com, Inc. Common Stock"
+        "projectName": "Amazon.com, Inc. Common Stock",
+        "isCrypto": false
+
     },
     {
         "ticker": "BRK/A",
-        "projectName": "Berkshire Hathaway Inc."
+        "projectName": "Berkshire Hathaway Inc.",
+        "isCrypto": false
     },
     {
         "ticker": "BRK/B",
-        "projectName": "Berkshire Hathaway Inc."
+        "projectName": "Berkshire Hathaway Inc.",
+        "isCrypto": false
     },
     {
         "ticker": "TSLA",
-        "projectName": "Tesla, Inc. Common Stock"
+        "projectName": "Tesla, Inc. Common Stock",
+        "isCrypto": false
     },
     {
         "ticker": "UNH",
-        "projectName": "UnitedHealth Group Incorporated Common Stock (DE)"
+        "projectName": "UnitedHealth Group Incorporated Common Stock (DE)",
+        "isCrypto": false
     },
     {
         "ticker": "XOM",
-        "projectName": "Exxon Mobil Corporation Common Stock"
+        "projectName": "Exxon Mobil Corporation Common Stock",
+        "isCrypto": false
     },
     {
         "ticker": "JNJ",
-        "projectName": "Johnson & Johnson Common Stock"
+        "projectName": "Johnson & Johnson Common Stock",
+        "isCrypto": false
     },
     {
         "ticker": "V",
-        "projectName": "Visa Inc"
+        "projectName": "Visa Inc",
+        "isCrypto": false
     },
     {
         "ticker": "NVDA",
-        "projectName": "NVIDIA Corporation"
+        "projectName": "NVIDIA Corporation",
+        "isCrypto": false
     },
     {
         "ticker": "JPM",
-        "projectName": "JP Morgan Chase & Co"
+        "projectName": "JP Morgan Chase & Co",
+        "isCrypto": false
     },
     {
         "ticker": "JNJ",
-        "projectName": "Johnson & Johnson Common Stock"
+        "projectName": "Johnson & Johnson Common Stock",
+        "isCrypto": false
     },
     {
         "ticker": "TSM",
-        "projectName": "Taiwan Semiconductor Manufacturing Company Ltd"
+        "projectName": "Taiwan Semiconductor Manufacturing Company Ltd",
+        "isCrypto": false
     },
     {
         "ticker": "WMT",
-        "projectName": "Walmart Inc. Common Stock"
+        "projectName": "Walmart Inc. Common Stock",
+        "isCrypto": false
     },
     {
         "ticker": "CVX",
-        "projectName": "Chevron Corporation Common Stock"
+        "projectName": "Chevron Corporation Common Stock",
+        "isCrypto": false
     },
     {
         "ticker": "MA",
-        "projectName": "Mastercard Incorporated Common Stock"
+        "projectName": "Mastercard Incorporated Common Stock",
+        "isCrypto": false
     },
     {
         "ticker": "PG",
-        "projectName": "Procter & Gamble Company"
+        "projectName": "Procter & Gamble Company",
+        "isCrypto": false
     },
     {
         "ticker": "LLY",
-        "projectName": "Eli Lilly and Company"
+        "projectName": "Eli Lilly and Company",
+        "isCrypto": false
     },
     {
         "ticker": "HD",
-        "projectName": "Home Depot, Inc."
+        "projectName": "Home Depot, Inc.",
+        "isCrypto": false
     },
     {
         "ticker": "BAC",
-        "projectName": "Bank of America Corporation"
+        "projectName": "Bank of America Corporation",
+        "isCrypto": false
     },
     {
         "ticker": "META",
-        "projectName": "Meta Platforms, Inc."
+        "projectName": "Meta Platforms, Inc.",
+        "isCrypto": false
     },
     {
         "ticker": "PFE",
-        "projectName": "Pfizer, Inc. Common Stock"
+        "projectName": "Pfizer, Inc. Common Stock",
+        "isCrypto": false
     },
     {
         "ticker": "KO",
-        "projectName": "Coca-Cola Company (The) Common Stock"
+        "projectName": "Coca-Cola Company (The) Common Stock",
+        "isCrypto": false
+    },
+    {
+        "ticker": "BTC",
+        "projectName": "Bitcoin",
+        "isCrypto": true
+    },
+    {
+        "ticker": "ETH",
+        "projectName": "Ethereum",
+        "isCrypto": true
+    },
+    {
+        "ticker": "USDT",
+        "projectName": "Tether",
+        "isCrypto": true
+    },
+    {
+        "ticker": "ETH",
+        "projectName": "Ethereum",
+        "isCrypto": true
+    },
+    {
+        "ticker": "BNB",
+        "projectName": "BNB",
+        "isCrypto": true
+    },
+    {
+        "ticker": "USDC",
+        "projectName": "USD Coin",
+        "isCrypto": true
+    },
+    {
+        "ticker": "BUSD",
+        "projectName": "Binance USD",
+        "isCrypto": true
+    },
+    {
+        "ticker": "XRP",
+        "projectName": "XRP",
+        "isCrypto": true
+    },
+    {
+        "ticker": "ADA",
+        "projectName": "Cardano",
+        "isCrypto": true
+    },
+    {
+        "ticker": "MATIC",
+        "projectName": "Polygon",
+        "isCrypto": true
+    },
+    {
+        "ticker": "DOGE",
+        "projectName": "Dogecoin",
+        "isCrypto": true
+    },
+    {
+        "ticker": "DOT",
+        "projectName": "Polkadot",
+        "isCrypto": true
+    },
+    {
+        "ticker": "Dai",
+        "projectName": "DAI",
+        "isCrypto": true
+    },
+    {
+        "ticker": "Solana",
+        "projectName": "SOL",
+        "isCrypto": true
+    },
+    {
+        "ticker": "DOT",
+        "projectName": "Polkadot",
+        "isCrypto": true
+    },
+    {
+        "ticker": "Dai",
+        "projectName": "DAI",
+        "isCrypto": true
+    },
+    {
+        "ticker": "SHIB",
+        "projectName": "Shiba Inu",
+        "isCrypto": true
+    },
+    {
+        "ticker": "TRON",
+        "projectName": "TRX",
+        "isCrypto": true
+    },
+    {
+        "ticker": "LTC",
+        "projectName": "Litecoin",
+        "isCrypto": true
+    },
+    {
+        "ticker": "UNI",
+        "projectName": "Uniswap",
+        "isCrypto": true
+    },
+    {
+        "ticker": "WBTC",
+        "projectName": "Wrapped Bitcoin",
+        "isCrypto": true
+    },
+    {
+        "ticker": "AVAX",
+        "projectName": "Avalanche",
+        "isCrypto": true
+    },
+    {
+        "ticker": "UNUS SED LEO",
+        "projectName": "LEO",
+        "isCrypto": true
+    },
+    {
+        "ticker": "ATOM",
+        "projectName": "Cosmos",
+        "isCrypto": true
+    },
+    {
+        "ticker": "LINK",
+        "projectName": "Chainlink",
+        "isCrypto": true
+    },
+    {
+        "ticker": "ETC",
+        "projectName": "Ethereum Classic",
+        "isCrypto": true
+    },
+    {
+        "ticker": "XLM",
+        "projectName": "Stellar",
+        "isCrypto": true
+    },
+    {
+        "ticker": "LINK",
+        "projectName": "Chainlink",
+        "isCrypto": true
+    },
+    {
+        "ticker": "XMR",
+        "projectName": "Monero",
+        "isCrypto": true
+    },
+    {
+        "ticker": "CRO",
+        "projectName": "Cronos",
+        "isCrypto": true
+    },
+    {
+        "ticker": "ALGO",
+        "projectName": "Algorand",
+        "isCrypto": true
+    },
+    {
+        "ticker": "BCH",
+        "projectName": "Bitcoin Cash",
+        "isCrypto": true
+    },
+    {
+        "ticker": "TON",
+        "projectName": "Toncoin",
+        "isCrypto": true
+    },
+    {
+        "ticker": "NEAR",
+        "projectName": "NEAR Protocol",
+        "isCrypto": true
+    },
+    {
+        "ticker": "VET",
+        "projectName": "VeChain",
+        "isCrypto": true
+    },
+    {
+        "ticker": "FIL",
+        "projectName": "Filecoin",
+        "isCrypto": true
+    },
+    {
+        "ticker": "QNT",
+        "projectName": "Quant",
+        "isCrypto": true
+    },
+    {
+        "ticker": "Flow",
+        "projectName": "Flow",
+        "isCrypto": true
+    },
+    {
+        "ticker": "CHZ",
+        "projectName": "Chiliz",
+        "isCrypto": true
+    },
+    {
+        "ticker": "LUNC",
+        "projectName": "Terra Classic",
+        "isCrypto": true
+    },
+    {
+        "ticker": "OKB",
+        "projectName": "OKB",
+        "isCrypto": true
+    },
+    {
+        "ticker": "CHZ",
+        "projectName": "Chiliz",
+        "isCrypto": true
+    },
+    {
+        "ticker": "HBAR",
+        "projectName": "Hedera",
+        "isCrypto": true
+    },
+    {
+        "ticker": "EGLD",
+        "projectName": "MultiversX (Elrond)",
+        "isCrypto": true
+    },
+    {
+        "ticker": "XCN",
+        "projectName": "Chain",
+        "isCrypto": true
+    },
+    {
+        "ticker": "XTZ",
+        "projectName": "Tezos",
+        "isCrypto": true
+    },
+    {
+        "ticker": "ICP",
+        "projectName": "Internet Computer",
+        "isCrypto": true
+    },
+    {
+        "ticker": "USDP",
+        "projectName": "Pax Dollar",
+        "isCrypto": true
+    },
+    {
+        "ticker": "APE",
+        "projectName": "ApeCoin",
+        "isCrypto": true
+    },
+    {
+        "ticker": "SAND",
+        "projectName": "The Sandbox",
+        "isCrypto": true
+    },
+    {
+        "ticker": "EOS",
+        "projectName": "EOS",
+        "isCrypto": true
+    },
+    {
+        "ticker": "THETA",
+        "projectName": "Theta Network",
+        "isCrypto": true
+    },
+    {
+        "ticker": "MANA",
+        "projectName": "Decentraland",
+        "isCrypto": true
+    },
+    {
+        "ticker": "GUSD",
+        "projectName": "Gemini Dollar",
+        "isCrypto": true
+    },
+    {
+        "ticker": "AAVE",
+        "projectName": "Aave",
+        "isCrypto": true
+    },
+    {
+        "ticker": "BSV",
+        "projectName": "Bitcoin SV",
+        "isCrypto": true
+    },
+    {
+        "ticker": "HT",
+        "projectName": "Huobi Token",
+        "isCrypto": true
     }
 ]
