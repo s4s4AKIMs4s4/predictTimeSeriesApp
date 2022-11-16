@@ -6,9 +6,10 @@ const CompanySearch: React.FC<IStockCard> = ({ isActice, projectName, ticker }) 
 
     return <div className={CompanySearchCss.searchCard}>
         <Box
+            // bg='white'
             className = {
                 `${CompanySearchCss.searchCard} 
-                 ${ isActice ? CompanySearchCss.searchCard__actice : ''}`}
+                 ${ isActice ? CompanySearchCss.searchCard_actice : CompanySearchCss.searchCard_inactice}`}
             maxW='sm'
             borderWidth='1px'
             borderRadius='lg'
