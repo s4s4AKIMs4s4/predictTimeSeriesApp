@@ -1,14 +1,14 @@
 import React from 'react'
 import styles from '../components/layout.module.css'
 
-interface IMainTimeSiresBody {
+interface IPredictPageBody {
     children: React.ReactElement
 }
-const MainTimeSiresBody: React.FC<IMainTimeSiresBody> = ({ children }) => {
+const PredictPageBody: React.FC<IPredictPageBody> = ({ children }) => {
     return <main className={styles.mainContainer}>
-        <div className={styles.container}>
+        <div className={styles.predictPageContainer}>
             {children}
         </div>
     </main>
 }
-export default MainTimeSiresBody
+export default PredictPageBody

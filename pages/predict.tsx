@@ -6,6 +6,7 @@ import { Heading } from "@chakra-ui/react";
 import predictPageStyle from "./predictPage.module.css"
 import Header from "../components/Header";
 import MainTimeSiresBody from "../components/MainTimeSiresBody";
+import PredictPageBody from "../components/PredictPageBody";
 
 export interface IFirstPost {
     data: string
@@ -46,16 +47,16 @@ const FirstPost: React.FC<IFirstPost> = ({ data }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Header pageHeader='predictSeries' pathLink='/' isBack = {true}/>
-        <MainTimeSiresBody>
-            <div className={predictPageStyle.container}>
-                <div className={predictPageStyle.predictPageContainer}>
+        <PredictPageBody>
+            <div className={predictPageStyle.chartViewContainer}>
+                <div className={predictPageStyle.chartView}>
                     <Heading as='h1' textAlign={'center'} size='xl' noOfLines={3}>
                         Predict time series for {ticker.current}
                     </Heading>
                     {renderChart()}
                 </div>
             </div>
-        </MainTimeSiresBody>
+        </PredictPageBody>
     </Layout>
 }
 

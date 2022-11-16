@@ -1,12 +1,12 @@
-.predictPageContainer {
+.chartView {
   display: flex;
   flex-flow: column;
   gap: 20px;
 }
-.container {
+.chartViewContainer {
   top: 2rem;
   position: relative;
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   justify-content: center;
   align-items: flex-start;
