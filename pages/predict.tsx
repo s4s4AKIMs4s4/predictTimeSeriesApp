@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import KlineChart, { ChartProps } from "../components/chart";
+import { useEffect, useRef, useState } from "react";
+import KlineChart from "../components/chart";
 import { Heading } from "@chakra-ui/react";
+import predictPageStyle from "./predictPage.module.css"
 
 export interface IFirstPost {
     data: string
@@ -24,10 +25,9 @@ const FirstPost: React.FC<IFirstPost> = ({ data }) => {
             setParseUrlError(UrlErrorEnum.ERROR)
             return
         }
-    
+
         ticker.current = href.split('=')[1]
         setParseUrlError(UrlErrorEnum.CORRECT)
-        
     }, [])
 
     const renderChart = () => {
@@ -42,12 +42,14 @@ const FirstPost: React.FC<IFirstPost> = ({ data }) => {
         <Head>
             <title>Predict</title>
         </Head>
-        
-        <Heading as='h1' textAlign={'center'} size='2xl' noOfLines={3}>
-            Predict time series
-        </Heading>
-
-        { renderChart() }
+        <div className= {predictPageStyle.container}>
+            <div className={predictPageStyle.predictPageContainer}>
+                <Heading as='h1' textAlign={'center'} size='xl' noOfLines={3}>
+                    Predict time series for {ticker.current}
+                </Heading>
+                {renderChart()}
+            </div>
+        </div>
     </Layout>
 }
 

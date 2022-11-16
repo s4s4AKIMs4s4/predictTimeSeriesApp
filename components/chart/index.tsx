@@ -26,9 +26,9 @@ const KlineChart = React.forwardRef<string | null, any>((props,ref) => {
     useEffect(() => {
         if(!currentChartData) return
         if(currentChartData.length === 0 ) return
-        trainNetwork(currentChartData).then((predictValues: any) => {
-            drawPridctedValue(predictValues)
-        })
+        // trainNetwork(currentChartData).then((predictValues: any) => {
+        //     drawPridctedValue(predictValues)
+        // })
     }, [currentChartData])
     return <div style={{ height: '400px' }} id='chart' />
 })
