@@ -5,7 +5,7 @@ import KlineChart from "../components/chart";
 import { Heading } from "@chakra-ui/react";
 import predictPageStyle from "./predictPage.module.css"
 import Header from "../components/Header";
-import MainTimeSiresBody from "../components/MainTimeSiresBody";
+import MainTimeSiresBody from "../components/IInputTimeSiresBody";
 import PredictPageBody from "../components/PredictPageBody";
 
 export interface IFirstPost {

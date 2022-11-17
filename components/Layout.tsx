@@ -4,8 +4,6 @@ import styles from './layout.module.css';
 
 export default function Layout({ children }) {
   return <div className={styles.root}>
-    {/* <main className={styles.container}> */}
       {children}
-    {/* </main > */}
   </div >
 }

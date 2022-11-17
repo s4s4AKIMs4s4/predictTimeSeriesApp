@@ -9,7 +9,7 @@
   flex-grow: 8;
 }
 
-.container {
+.InputContainer {
   /* flex-grow: 8; */
   max-width: 36rem;
   height: 100%;
@@ -18,7 +18,7 @@
 
 .predictPageContainer {
   flex-grow: 8;
-  max-width: 45rem;
+  max-width: 55rem;
   display: flex;
   justify-content: center;
   margin: auto;

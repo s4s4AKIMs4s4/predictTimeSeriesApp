@@ -30,7 +30,7 @@ const KlineChart = React.forwardRef<string | null, any>((props,ref) => {
         //     drawPridctedValue(predictValues)
         // })
     }, [currentChartData])
-    return <div style={{ height: '400px' }} id='chart' />
+    return <div style={{ height: '400px',width:'100%' }} id='chart' />
 })
 
 export default KlineChart

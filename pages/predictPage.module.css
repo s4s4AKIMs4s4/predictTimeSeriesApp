@@ -2,11 +2,14 @@
   display: flex;
   flex-flow: column;
   gap: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 .chartViewContainer {
   top: 2rem;
   position: relative;
-  /* width: 100vw; */
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: flex-start;
