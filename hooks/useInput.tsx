@@ -11,47 +11,50 @@ const useInput = () => {
     const [limitInputResult, setLimitInputResult] = useState<number>(4)
 
     const upArrowHandle = () => {
+        // debugger
         let findedIndex: number = 0
         const findedfStocks = stockCard.find((value, index) => {
             if (value.isActice) findedIndex = index
             return value.isActice
         })
-        if (findedIndex === 0) return
-        
-        const newStock:Array<IStockCard> = []
+        if (findedIndex === -1) return
+
+        const newStock: Array<IStockCard> = []
         let isFirstActive = false
-        for(let i = 0; i < stockCard.length; i++) {
-            let isActive = i === (findedIndex - 1) ? true : false
-            if(findedIndex === 0 && isActive ){
+        for (let i = 0; i < stockCard.length; i++) {
+            let isActive = i === ( (findedIndex || 1)  - 1) ? true : false
+            if (findedIndex === 0 && isActive) {
                 isFirstActive = true
                 isActive = false
             }
             newStock[i] = {
                 ...stockCard[i],
-                isActice:isActive,
+                isActice: isActive,
             }
-            if(i === stockCard.length - 1 && isFirstActive) newStock[i].isActice = true
+            if (i === stockCard.length - 1 && isFirstActive) {
+                newStock[i].isActice = true
+            }
         }
         setStockCard(newStock)
     }
 
     const downArrowHandle = () => {
         let activeIndex: null | number | undefined = null
-        const newStock:Array<IStockCard> = []
-        let isActive:boolean = false
-        for(let i = 0; i < stockCard.length; i++) {
+        const newStock: Array<IStockCard> = []
+        let isActive: boolean = false
+        for (let i = 0; i < stockCard.length; i++) {
             newStock[i] = {
                 ...stockCard[i],
-                isActice:isActive
+                isActice: isActive
             }
-            if (stockCard[i].isActice){
-                if(i === stockCard.length - 1){
+            if (stockCard[i].isActice) {
+                if (i === stockCard.length - 1) {
                     newStock[0].isActice = true
                     continue
                 }
-                isActive = true                        
+                isActive = true
             }
-            else isActive = false    
+            else isActive = false
         }
         setStockCard(newStock)
     }
@@ -59,20 +62,26 @@ const useInput = () => {
         if (e.key === 'Enter') {
             const currentTicker = stockCard.find((value) => value.isActice).ticker
             setIsOpenView(!isOpenView)
-            // navigateToPredictPage(currentTicker)
         }
-        if (e.key === 'ArrowDown')
+        if (e.key === 'ArrowDown') {
+            e.preventDefault()
             downArrowHandle()
-        if (e.key === 'ArrowUp')
+        }
+        if (e.key === 'ArrowUp') {
+            e.preventDefault()
             upArrowHandle()
+        }
     }
 
     const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+        if (e.target.value === 'ArrowUp') {
+            return
+        }
         if (e.target.value === '') {
             setIsOpenView(false)
             return
         }
-
         else
             if (!isOpenView) setIsOpenView(true)
 
