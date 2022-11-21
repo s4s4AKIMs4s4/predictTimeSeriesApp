@@ -2,10 +2,9 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import { useEffect, useRef, useState } from "react";
 import KlineChart from "../components/chart";
-import { Heading } from "@chakra-ui/react";
+import { CircularProgress, Heading, Progress, Spinner } from "@chakra-ui/react";
 import predictPageStyle from "./predictPage.module.css"
 import Header from "../components/Header";
-import MainTimeSiresBody from "../components/IInputTimeSiresBody";
 import PredictPageBody from "../components/PredictPageBody";
 
 export interface IFirstPost {
@@ -17,10 +16,11 @@ export enum UrlErrorEnum {
     ERROR = 'ERROR',
     CORRECT = 'CORRECT'
 }
-
-const FirstPost: React.FC<IFirstPost> = ({ data }) => {
+const FirstPost: React.FC = () => {
     const ticker = useRef<string | null>(null)
     const [parseUrlError, setParseUrlError] = useState<UrlErrorEnum>(UrlErrorEnum.NOT_DEFINED)
+    // <KlineChart ref={ticker} />
+    // {renderChart()}
 
     useEffect(() => {
         const href = window.location.href
@@ -37,16 +37,20 @@ const FirstPost: React.FC<IFirstPost> = ({ data }) => {
         if (parseUrlError === UrlErrorEnum.ERROR) return <Heading as='h2' textAlign={'center'} size='xl' noOfLines={3}>
             Error has ocurred
         </Heading>
-        if (parseUrlError === UrlErrorEnum.CORRECT) return <KlineChart ref={ticker} />
+        if (parseUrlError === UrlErrorEnum.CORRECT) return <>
+            <KlineChart ref={ticker} />
+        </>
         if (parseUrlError === UrlErrorEnum.NOT_DEFINED) return <></>
     }
 
+
+
     return <Layout>
         <Head>
-        <title> {ticker.current} predict </title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-        <Header pageHeader='predictSeries' pathLink='/' isBack = {true}/>
+            <title> {ticker.current} predict </title>
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Header pageHeader='predictSeries' pathLink='/' isBack={true} />
         <PredictPageBody>
             <div className={predictPageStyle.chartViewContainer}>
                 <div className={predictPageStyle.chartView}>
@@ -60,11 +64,5 @@ const FirstPost: React.FC<IFirstPost> = ({ data }) => {
     </Layout>
 }
 
-export async function getStaticProps() {
-    const data = 'someData'
-    return {
-        props: { data }
-    }
-}
 
 export default FirstPost  

@@ -17,19 +17,29 @@ export interface IDataChart {
     turnover?: number,
 }
 
-const useKlineChart = (ticker:string) => {
-    const isCrypro = useRef<boolean>(Stocks.find((value) => value.ticker === ticker).isCrypto)    
-    const {data, isLoading} = useGetMarcetplaceData(ticker, isCrypro.current)
+interface IKlineProps {
+    ticker: string,
+    netWorkIsLoading: boolean
+}
+// netWorkIsLoading
+const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
+    const isCrypro = useRef<boolean>(Stocks.find((value) => value.ticker === ticker).isCrypto)
+    const { data, isLoading } = useGetMarcetplaceData(ticker, isCrypro.current)
     const [currentChartData, setCurrentChartData] = useState<Array<IDataChart>>([])
     const currentChartObj = useRef<Chart | null>(null)
 
     useEffect(() => {
-        if(isLoading) return 
-        renderChart()
-    },[isLoading])
+        if (isLoading) return
+        genetateChartData()
+    }, [isLoading])
 
-    const addToChartCircle = (dataIndex:number,price:number) => {
-        currentChartObj.current.createTechnicalIndicator(' ', true, {id: 'candle_pane', dragEnabled: true,})
+    const genetateChartData = () => {
+        const Kdata = generateChartDate(data, isCrypro.current)
+        setCurrentChartData(Kdata)
+    }
+
+    const addToChartCircle = (dataIndex: number, price: number) => {
+        currentChartObj.current.createTechnicalIndicator(' ', true, { id: 'candle_pane', dragEnabled: true, })
         currentChartObj.current.createShape(
             createCircle(dataIndex, price),
             'candle_pane',
@@ -38,15 +48,13 @@ const useKlineChart = (ticker:string) => {
     const drawPridctedValue = (predictValue) => {
         addToChartCircle(currentChartData.length, predictValue)
     }
-    const renderChart = () => {
+    const renderChart = (predictValue) => {
         const chart = klinecharts.init(`${'chart'}`);
         currentChartObj.current = chart
         chart.setStyleOptions(generateChartStyle(typeGraphEnum.AREA))
-        const Cdata = generateChartDate(data,isCrypro.current)
-        setCurrentChartData(Cdata)
-        
-        chart.applyNewData(Cdata);
+        chart.applyNewData(currentChartData);
         chart.addShapeTemplate(generateTemplateCircle())
+        drawPridctedValue(predictValue)
     }
     return {
         renderChart,

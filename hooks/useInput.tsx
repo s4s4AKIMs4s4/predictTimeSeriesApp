@@ -9,6 +9,7 @@ const useInput = () => {
     const { navigateToPredictPage } = useNavigate()
     const [searchedCompany, setSearchedCompany] = useState<string>('')
     const [limitInputResult, setLimitInputResult] = useState<number>(4)
+    const [inputText, setInputText] = useState<string>('')
 
     const upArrowHandle = () => {
         // debugger
@@ -61,6 +62,7 @@ const useInput = () => {
     const keyHandler = (e: KeyboardEvent) => {
         if (e.key === 'Enter') {
             const currentTicker = stockCard.find((value) => value.isActice).ticker
+            setInputText(currentTicker)
             setIsOpenView(!isOpenView)
         }
         if (e.key === 'ArrowDown') {
@@ -74,17 +76,17 @@ const useInput = () => {
     }
 
     const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-        if (e.target.value === 'ArrowUp') {
+        if (e.target.value === 'ArrowUp') 
             return
-        }
+        setInputText(e.target.value)
+        
         if (e.target.value === '') {
             setIsOpenView(false)
             return
         }
         else
             if (!isOpenView) setIsOpenView(true)
-
+        
         const filtredValues = Stocks.filter((value) => {
             return value.ticker.toLowerCase().includes(e.target.value.toLowerCase()) ||
                 value.projectName.toLowerCase().includes(e.target.value.toLowerCase())
@@ -109,7 +111,9 @@ const useInput = () => {
         setIsOpenView,
         searchedCompany,
         setSearchedCompany,
-        changeInput
+        changeInput,
+        inputText,
+        setInputText
     }
 }
 export default useInput

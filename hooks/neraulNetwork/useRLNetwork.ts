@@ -25,7 +25,7 @@ const useRLNetwork = () => {
         }
     }
 
-    const trainNetwork = async (currentChartData: Array<IDataChart>) => {
+    const trainNetwork = async (currentChartData: Array<IDataChart>, callback) => {
         const {preparedData,maxThreshold} = prepareDate(currentChartData)
         const model_params = {
             inputs: preparedData.map((smeObject) => smeObject.set),
@@ -37,12 +37,7 @@ const useRLNetwork = () => {
             input_hiddenlayers: inputHiddenlayers,
         }
 
-        const { model, stats } = await trainModel(model_params, maxThreshold,
-            (epoch, log, params) => {
-                console.log(epoch)
-                console.log(log)
-                console.log(params)
-            })
+        const { model, stats } = await trainModel(model_params, maxThreshold, callback)
 
         return makePrediction(model, maxThreshold, currentChartData)
     }
@@ -65,6 +60,7 @@ const useRLNetwork = () => {
         prepareDate,
         trainNetwork,
         makePrediction,
+        inputEpoch
     }
 
 }

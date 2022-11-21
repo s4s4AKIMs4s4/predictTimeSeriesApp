@@ -2,9 +2,7 @@ import { Input } from "@chakra-ui/react"
 import React, { useEffect, useState } from "react"
 import TickerInputCss from './TickerInputCss.module.css'
 import ViewResults from "./ViewResults"
-import useNavigate from "../hooks/useNavigate"
 import useInput from "../hooks/useInput"
-
 
 export interface IStockCard {
     ticker: string,
@@ -20,7 +18,9 @@ const TickerInput: React.FC = () => {
         setIsOpenView,
         searchedCompany,
         setSearchedCompany,
-        changeInput
+        changeInput,
+        inputText,
+        setInputText
     } = useInput()
 
     useEffect(() => {
@@ -54,13 +54,14 @@ const TickerInput: React.FC = () => {
     }
 
     return <div className={TickerInputCss.TickerInput}>
-        <Input onChange={changeInput} placeholder='Enter Ticker or company name' />
+        <Input value = {inputText}  onChange={changeInput} placeholder='Enter Ticker or company name' />
         <ViewResults
             isOpen={isOpenView}
             stockCard={stockCard}
             setStockCard={setStockCard}
             changeActiveElement={changeActiveElement}
             setIsOpenView={setIsOpenView}
+            setInputText = {setInputText} 
         />
     </div>
 }

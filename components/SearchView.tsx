@@ -16,12 +16,12 @@ const SearchView: React.FC = () => {
         <div className={SearchViewCss.searchViewContainer__linkWrapper}>
             {/* <NextLink href='...' legacyBehavior passHref> */}
 
-            <NextLink legacyBehavior passHref href={{ pathname: '/predict', query: { ticker: `${ticker}` } } }>
+            <NextLink legacyBehavior passHref href={{ pathname: '/predict', query: { ticker: `${'BTC'}` } } }>
                 <Link  color='teal.500'>
                     predict
                 </Link>
             </NextLink>
-            <NextLink legacyBehavior passHref href={{ pathname: '/predict', query: { ticker: `${ticker}` } }}>
+            <NextLink legacyBehavior passHref href={{ pathname: '/predict', query: { ticker: `${'BTC'}` } }}>
                 <Link  color='teal.500'>
                     statistic
                 </Link>

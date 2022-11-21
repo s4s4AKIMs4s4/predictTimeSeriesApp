@@ -1,7 +1,8 @@
-import { MutableRefObject, useEffect, useLayoutEffect, useRef } from "react"
+import { MutableRefObject, useEffect, useLayoutEffect, useRef, useState } from "react"
 import useRLNetwork from "../../hooks/neraulNetwork/useRLNetwork";
 import useKlineChart from "../../hooks/useKlineChart";
 import React from 'react';
+import { CircularProgress, Heading } from "@chakra-ui/react";
 
 interface IDataChart {
     open: number,
@@ -19,18 +20,64 @@ export interface ChartProps {
     ticker?: string | null
 }
 
-const KlineChart = React.forwardRef<string | null, any>((props,ref) => {
-    const { drawPridctedValue, currentChartData } = useKlineChart((ref as MutableRefObject<any>).current)
-    const { trainNetwork } = useRLNetwork()
+const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
+    const [netWorkIsLoading, setNetWorkIsLoading] = useState<boolean>(true)
+    const { drawPridctedValue, currentChartData, renderChart } = useKlineChart(
+        {
+            ticker: (ref as MutableRefObject<any>).current,
+            netWorkIsLoading
+        }
+    )
+    const [predictValues, setpredictValues] = useState<number | null>(null)
+
+    const { trainNetwork, inputEpoch } = useRLNetwork()
+    const [circularProgressValue, setCircularProgressValue] = useState<number>(0)
+    // <div style={{ height: '400px',width:'100%', padding:'0 17px' }} id='chart' />
+
+    const calculateChartProgress = (epoch, log, params) => {
+        const caluculatingEpoch = epoch - 1
+        const progressValue = ((epoch + 1) * 100) / inputEpoch
+        console.log(epoch)
+        console.log(log)
+        console.log(params)
+        console.log(progressValue)
+        setCircularProgressValue(progressValue)
+        // if (progressValue === 100) {
+        //     setNetWorkIsLoading(false)
+        // }
+    }
 
     useEffect(() => {
-        if(!currentChartData) return
-        if(currentChartData.length === 0 ) return
-        // trainNetwork(currentChartData).then((predictValues: any) => {
-        //     drawPridctedValue(predictValues)
-        // })
+        if(predictValues !== null && !netWorkIsLoading){
+            renderChart(predictValues)
+        }
+    },[netWorkIsLoading, predictValues])
+
+    useEffect(() => {
+        if (!currentChartData) return
+        if (currentChartData.length === 0) return
+        trainNetwork(currentChartData, calculateChartProgress).then((predictValues: any) => {
+            // setTimeout(() => {
+            //     renderChart(predictValues)                
+            // }, 300);
+            setpredictValues(predictValues)
+            setNetWorkIsLoading(false)
+        })
     }, [currentChartData])
-    return <div style={{ height: '400px',width:'100%' }} id='chart' />
+    return <>
+        {
+            netWorkIsLoading ? <>
+                <CircularProgress value={circularProgressValue} />
+                <Heading as='h2' textAlign={'center'} size='sm' noOfLines={3}>
+                    Calculating feature value...
+                </Heading>
+            </>
+                : <>
+                    <div style={{ height: '400px', width: '100%', padding: '0 17px' }} id='chart' />
+                </>
+        }
+
+    </>
 })
 
 export default KlineChart
