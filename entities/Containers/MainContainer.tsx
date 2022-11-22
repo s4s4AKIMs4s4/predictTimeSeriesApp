@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../components/layout.module.css'
+import styles from '../layout.module.css'
 interface IMainContainer {
     children: React.ReactElement
 }

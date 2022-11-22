@@ -1,6 +1,6 @@
 import { MutableRefObject, useEffect, useLayoutEffect, useRef, useState } from "react"
-import useRLNetwork from "../../hooks/neraulNetwork/useRLNetwork";
-import useKlineChart from "../../hooks/useKlineChart";
+import useRLNetwork from "../../../features/neraulNetwork/useRLNetwork";
+import useKlineChart from "../../../features/chart/useKlineChart";
 import React from 'react';
 import { CircularProgress, Heading } from "@chakra-ui/react";
 
@@ -29,22 +29,16 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
         }
     )
     const [predictValues, setpredictValues] = useState<number | null>(null)
-
     const { trainNetwork, inputEpoch } = useRLNetwork()
     const [circularProgressValue, setCircularProgressValue] = useState<number>(0)
-    // <div style={{ height: '400px',width:'100%', padding:'0 17px' }} id='chart' />
 
     const calculateChartProgress = (epoch, log, params) => {
-        const caluculatingEpoch = epoch - 1
         const progressValue = ((epoch + 1) * 100) / inputEpoch
         console.log(epoch)
         console.log(log)
         console.log(params)
         console.log(progressValue)
         setCircularProgressValue(progressValue)
-        // if (progressValue === 100) {
-        //     setNetWorkIsLoading(false)
-        // }
     }
 
     useEffect(() => {
@@ -57,9 +51,6 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
         if (!currentChartData) return
         if (currentChartData.length === 0) return
         trainNetwork(currentChartData, calculateChartProgress).then((predictValues: any) => {
-            // setTimeout(() => {
-            //     renderChart(predictValues)                
-            // }, 300);
             setpredictValues(predictValues)
             setNetWorkIsLoading(false)
         })
@@ -67,7 +58,7 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
     return <>
         {
             netWorkIsLoading ? <>
-                <CircularProgress value={circularProgressValue} />
+                <CircularProgress value = {circularProgressValue}/>
                 <Heading as='h2' textAlign={'center'} size='sm' noOfLines={3}>
                     Calculating feature value...
                 </Heading>

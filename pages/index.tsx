@@ -1,14 +1,12 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
-import TickerInput from '../components/TickerInput'
 import inputPage from './inputPage.module.css'
 import TickerProvider from '../Context/Providers/TickerProvider';
-import SearchView from '../components/SearchView';
-import Layout from '../components/Layout';
-import Header from '../components/Header';
-import MainTimeSiresBody from '../components/IInputTimeSiresBody';
+import SearchView from '../widgets/Search/SearchView';
+import Layout from '../entities/Layout';
+import Header from '../entities/Header';
+import MainTimeSiresBody from '../entities/Containers/InputTimeSiresContainer';
 
-export default function Home() {
+export default function InputPage() {
   return (
     <Layout>
       <Head>
@@ -20,7 +18,7 @@ export default function Home() {
         <div className={inputPage.inputViewWrapper}>
           <div className={inputPage.inputView}>
             <TickerProvider>
-              <SearchView />
+              <SearchView/>
             </TickerProvider>
           </div>
         </div>

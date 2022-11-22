@@ -55,10 +55,6 @@ export const trainModel = async (model_params, maxThreshold, callback) => {
 
     let X = inputs
     let Y = outputs
-    console.log('X[0]')
-    console.log(X[0])
-    console.log(X);
-    console.log(X.length + " " + X.length)
 
     const xs = tf.tensor2d(X, [X.length, X[0].length]).div(tf.scalar(maxThreshold));
     const ys = tf.tensor2d(Y, [Y.length, 1]).reshape([Y.length, 1]).div(tf.scalar(maxThreshold));
@@ -95,20 +91,12 @@ export const trainModel = async (model_params, maxThreshold, callback) => {
                 }
             }
         });
-    // await model.save('localstorage://tfjs-stocks');
-    // const model = await tf.loadLayersModel('localstorage://tfjs-stocks');
-    // const hist = {};
     return { model: model, stats: hist };
 }
 
 
 export const makePredictions = (X, model, maxThreshold) => {
-    //let X=this.inputs.slice(Math.floor(size/100 * inputs.length),inputs.length);
-    console.table(X.length);
-    console.log(String(X[0]).length)
     const predictedResults = model.predict(tf.tensor2d(X,[X.length,X[0].length]).div(tf.scalar(maxThreshold)));
-    console.log(predictedResults.dataSync() * maxThreshold);
-    // Array.from(predictedResults.dataSync());
     return predictedResults.dataSync() * maxThreshold
 }
 

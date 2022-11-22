@@ -1,14 +1,9 @@
 import { Input } from "@chakra-ui/react"
 import React, { useEffect, useState } from "react"
 import TickerInputCss from './TickerInputCss.module.css'
-import ViewResults from "./ViewResults"
-import useInput from "../hooks/useInput"
+import ViewResults from "./ViewCards/ViewResults"
+import useInput from "../../features/input/useInput"
 
-export interface IStockCard {
-    ticker: string,
-    projectName: string,
-    isActice: boolean
-}
 
 const TickerInput: React.FC = () => {
     const { keyHandler,

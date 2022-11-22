@@ -1,11 +1,11 @@
 import Head from "next/head";
-import Layout from "../components/Layout";
+import Layout from "../entities/Layout";
 import { useEffect, useRef, useState } from "react";
-import KlineChart from "../components/chart";
-import { CircularProgress, Heading, Progress, Spinner } from "@chakra-ui/react";
+import KlineChart from "../widgets/Search/chart/KlineChart";
+import {Heading} from "@chakra-ui/react";
 import predictPageStyle from "./predictPage.module.css"
-import Header from "../components/Header";
-import PredictPageBody from "../components/PredictPageBody";
+import Header from "../entities/Header";
+import PredictPageBody from "../entities/Containers/PredictPageContainer";
 
 export interface IFirstPost {
     data: string
@@ -16,11 +16,9 @@ export enum UrlErrorEnum {
     ERROR = 'ERROR',
     CORRECT = 'CORRECT'
 }
-const FirstPost: React.FC = () => {
+const PredictPage: React.FC = () => {
     const ticker = useRef<string | null>(null)
     const [parseUrlError, setParseUrlError] = useState<UrlErrorEnum>(UrlErrorEnum.NOT_DEFINED)
-    // <KlineChart ref={ticker} />
-    // {renderChart()}
 
     useEffect(() => {
         const href = window.location.href
@@ -28,7 +26,6 @@ const FirstPost: React.FC = () => {
             setParseUrlError(UrlErrorEnum.ERROR)
             return
         }
-
         ticker.current = href.split('=')[1]
         setParseUrlError(UrlErrorEnum.CORRECT)
     }, [])
@@ -42,8 +39,6 @@ const FirstPost: React.FC = () => {
         </>
         if (parseUrlError === UrlErrorEnum.NOT_DEFINED) return <></>
     }
-
-
 
     return <Layout>
         <Head>
@@ -64,5 +59,4 @@ const FirstPost: React.FC = () => {
     </Layout>
 }
 
-
-export default FirstPost  
+export default PredictPage  

@@ -1,11 +1,11 @@
 import klinecharts, { Chart } from "klinecharts"
 import { useEffect, useRef, useState } from "react"
-import { generateChartDate } from "../components/chart/date"
-import { createCircle } from "../components/chart/shapes/addShapes"
-import { generateTemplateCircle } from "../components/chart/shapes/circle"
-import { generateChartStyle, typeGraphEnum } from "../components/chart/style"
-import useGetMarcetplaceData from "./api/useGetMarcetplaceData"
-import Stocks from '../CompanyInformation/Stocks.json'
+import { generateChartDate } from "../../widgets/Search/chart/date"
+import { createCircle } from "../../widgets/Search/chart/shapes/addShapes"
+import { generateTemplateCircle } from "../../widgets/Search/chart/shapes/circle"
+import { generateChartStyle, typeGraphEnum } from "../../widgets/Search/chart/style"
+import useGetMarcetplaceData from "../../shared/api/useGetMarcetplaceData"
+import Stocks from '../../CompanyInformation/Stocks.json'
 
 export interface IDataChart {
     open: number,

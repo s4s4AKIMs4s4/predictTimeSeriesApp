@@ -1,7 +1,7 @@
 import { useState } from "react"
 // import { generateCryptoDate } from "../../components/chart/date"
-import { computeSMA, getMaxThreshold, makePredictions, trainModel } from "../../RecurentNeuralNetwork"
-import { IDataChart } from "../useKlineChart"
+import { computeSMA, getMaxThreshold, makePredictions, trainModel } from "./RecurentNeuralNetwork"
+import { IDataChart } from "../chart/useKlineChart"
 
 const useRLNetwork = () => {
     const [windowSize, setWindowSize] = useState<number>(20)

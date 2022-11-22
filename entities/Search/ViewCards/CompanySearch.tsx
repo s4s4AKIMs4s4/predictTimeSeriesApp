@@ -1,12 +1,11 @@
 import { Badge, Box, Heading, Image } from "@chakra-ui/react"
 import CompanySearchCss from './CompanySearchCss.module.css'
-import { IStockCard } from "./TickerInput"
+import {  IStockCard } from "./model";
 
 const CompanySearch: React.FC<IStockCard> = ({ isActice, projectName, ticker }) => {
 
     return <div className={CompanySearchCss.searchCard}>
         <Box
-            // bg='white'
             className = {
                 `${CompanySearchCss.searchCard} 
                  ${ isActice ? CompanySearchCss.searchCard_actice : CompanySearchCss.searchCard_inactice}`}

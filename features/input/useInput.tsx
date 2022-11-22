@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { IStockCard } from "../components/TickerInput"
-import useNavigate from "./useNavigate"
-import Stocks from "../CompanyInformation/Stocks.json"
+import useNavigate from "../useNavigate"
+import Stocks from "../../CompanyInformation/Stocks.json"
+import { IStockCard } from "../../entities/Search/ViewCards/model"
 
 const useInput = () => {
     const [stockCard, setStockCard] = useState<Array<IStockCard> | null>(null)
