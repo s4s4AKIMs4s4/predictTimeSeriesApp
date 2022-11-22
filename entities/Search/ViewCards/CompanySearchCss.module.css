@@ -1,0 +1,11 @@
+.searchCard {
+    max-width:100% !important;
+}
+
+.searchCard_inactice{
+    background-color: white;
+}
+
+.searchCard_actice{
+    background-color: gray;
+}

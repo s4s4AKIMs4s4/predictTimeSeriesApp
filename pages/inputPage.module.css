@@ -1,0 +1,11 @@
+.inputViewWrapper{
+   height:100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.inputView{
+  width:75%;
+  max-width: 39em;
+}

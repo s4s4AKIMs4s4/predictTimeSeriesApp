@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.mainContainer{
+  width:100vw;
+  flex-grow: 8;
+}
+
+.InputContainer {
+  /* flex-grow: 8; */
+  max-width: 36rem;
+  height: 100%;
+  margin: auto;
+}
+
+.predictPageContainer {
+  flex-grow: 8;
+  max-width: 55rem;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.header {
+  max-height: calc(var(--chakra-fontSizes-2xl) + 31px);
+  width: 100vw;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 48em) {
+  .header {
+    max-height: calc(var(--chakra-fontSizes-3xl) + 30px);
+  }
+}

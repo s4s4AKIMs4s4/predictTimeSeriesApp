@@ -1,0 +1,11 @@
+.searchViewContainer{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+.searchViewContainer__linkWrapper{
+    display: flex;
+    flex-direction: row;
+    gap:1em;
+    justify-content: center;
+}
