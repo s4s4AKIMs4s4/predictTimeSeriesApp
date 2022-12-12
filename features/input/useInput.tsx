@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import useNavigate from "../useNavigate"
 import Stocks from "../../CompanyInformation/Stocks.json"
 import { IStockCard } from "../../entities/Search/ViewCards/model"
+import { TickerContext } from "../../Context/Models"
 
-const useInput = () => {
+const useInput = (setTicker) => {
     const [stockCard, setStockCard] = useState<Array<IStockCard> | null>(null)
     const [isOpenView, setIsOpenView] = useState<boolean>(false)
     const { navigateToPredictPage } = useNavigate()
@@ -12,7 +13,6 @@ const useInput = () => {
     const [inputText, setInputText] = useState<string>('')
 
     const upArrowHandle = () => {
-        // debugger
         let findedIndex: number = 0
         const findedfStocks = stockCard.find((value, index) => {
             if (value.isActice) findedIndex = index
@@ -64,6 +64,7 @@ const useInput = () => {
             const currentTicker = stockCard.find((value) => value.isActice).ticker
             setInputText(currentTicker)
             setIsOpenView(!isOpenView)
+            setTicker(currentTicker)
         }
         if (e.key === 'ArrowDown') {
             e.preventDefault()

@@ -7,13 +7,16 @@ interface AuxProps {
 
 const TickerProvider = ({ children }: AuxProps) => {
     const [pickedTicker, setPickedTicker] = useState<null | string>(null)
-
+    const [copmaredTicer, setcopmaredTicer] = useState<null | string>(null)
+    
     return <>
         <TickerContext.Provider
             value={
                 {
                     ticker: pickedTicker,
-                    setTicker: setPickedTicker
+                    setTicker: setPickedTicker,
+                    setCompatedTicker:setcopmaredTicer,
+                    comparedTicker:copmaredTicer
                 }
             }
         >

@@ -23,8 +23,8 @@ interface IKlineProps {
 }
 // netWorkIsLoading
 const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
-    const isCrypro = useRef<boolean>(Stocks.find((value) => value.ticker === ticker).isCrypto)
-    const { data, isLoading } = useGetMarcetplaceData(ticker, isCrypro.current)
+    const isCrypro = useRef<boolean>(Stocks.find((value) => value.ticker === ticker)?.isCrypto)
+    const { data, isLoading } = useGetMarcetplaceData(ticker)
     const [currentChartData, setCurrentChartData] = useState<Array<IDataChart>>([])
     const currentChartObj = useRef<Chart | null>(null)
 

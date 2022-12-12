@@ -2,7 +2,7 @@ import { MutableRefObject, useEffect, useLayoutEffect, useRef, useState } from "
 import useRLNetwork from "../../../features/neraulNetwork/useRLNetwork";
 import useKlineChart from "../../../features/chart/useKlineChart";
 import React from 'react';
-import { CircularProgress, Heading } from "@chakra-ui/react";
+import { CircularProgress, Heading, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react";
 
 interface IDataChart {
     open: number,
@@ -31,10 +31,15 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
     const [predictValues, setpredictValues] = useState<number | null>(null)
     const { trainNetwork, inputEpoch } = useRLNetwork()
     const [circularProgressValue, setCircularProgressValue] = useState<number>(0)
+    const [numberOfEpoch, setEpoch] = useState<number>(0)
+    const [lastLoss, setLastLoss] = useState<number>(10)
 
     const calculateChartProgress = (epoch, log, params) => {
+        setEpoch(epoch+1)
         const progressValue = ((epoch + 1) * 100) / inputEpoch
         console.log(epoch)
+        //@ts-ignore
+        setLastLoss(log.loss)
         console.log(log)
         console.log(params)
         console.log(progressValue)
@@ -42,10 +47,10 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
     }
 
     useEffect(() => {
-        if(predictValues !== null && !netWorkIsLoading){
+        if (predictValues !== null && !netWorkIsLoading) {
             renderChart(predictValues)
         }
-    },[netWorkIsLoading, predictValues])
+    }, [netWorkIsLoading, predictValues])
 
     useEffect(() => {
         if (!currentChartData) return
@@ -58,13 +63,37 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
     return <>
         {
             netWorkIsLoading ? <>
-                <CircularProgress value = {circularProgressValue}/>
+                <CircularProgress value={circularProgressValue} />
                 <Heading as='h2' textAlign={'center'} size='sm' noOfLines={3}>
-                    Calculating feature value...
+                    Epoch {numberOfEpoch} from 5...
                 </Heading>
             </>
                 : <>
-                    <div style={{ height: '400px', width: '100%', padding: '0 17px' }} id='chart' />
+                    <div style={{ height: '400px', width: '100%', marginBottom:'2em' }} id='chart' />
+                    <Heading as='h3' textAlign={'center'} size='sm' noOfLines={3}>
+                        Parametr values
+                    </Heading>
+                    <TableContainer>
+                        <Table variant='simple'>
+                            <Thead>
+                                <Tr>
+                                    <Th>Name of parametr</Th>
+                                    <Th>Value</Th>
+                                </Tr>
+                            </Thead>
+                            <Tbody>
+                                <Tr>
+                                    <Td>loss</Td>
+                                    <Td isNumeric>{lastLoss.toFixed(4)}</Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>Epoch</Td>
+                                    <Td isNumeric>{(5).toFixed(4)}</Td>
+                                </Tr>
+                            </Tbody>
+
+                        </Table>
+                    </TableContainer>
                 </>
         }
 

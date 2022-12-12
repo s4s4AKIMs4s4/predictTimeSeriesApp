@@ -3,9 +3,24 @@
     flex-direction: column;
     gap:20px;
 }
+
 .searchViewContainer__linkWrapper{
     display: flex;
     flex-direction: row;
     gap:1em;
     justify-content: center;
+}
+
+.fakeLink{
+    color:var(--chakra-colors-teal-500);
+    cursor: pointer;
+}
+
+.fakeLink:hover{
+    text-decoration: underline;
+}
+
+.link__disabled{
+    color:gray !important;
+    pointer-events: none;
 }

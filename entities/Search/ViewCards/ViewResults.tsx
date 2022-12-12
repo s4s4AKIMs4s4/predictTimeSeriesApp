@@ -5,8 +5,8 @@ import { IViewResults } from "../model";
 import CompanySearch from "./CompanySearch"
 import ViewResultsCss from './ViewResults.module.css'
 
-const ViewResults: React.FC<IViewResults> = ({ isOpen, stockCard, setStockCard, setInputText, changeActiveElement, setIsOpenView }) => {
-    const {setTicker} = useContext(TickerContext)
+const ViewResults: React.FC<IViewResults> = ({ isOpen,setTicker, stockCard, setStockCard, setInputText, changeActiveElement, setIsOpenView }) => {
+    // const {setTicker} = useContext(TickerContext)
     const currentTicker = useRef<string | null>(null)
     const companyMouseMoveHandler = (ticker: string) => (e: React.MouseEvent<HTMLDivElement>) => {
         if (!currentTicker.current) {

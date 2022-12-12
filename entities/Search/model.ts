@@ -6,5 +6,11 @@ export interface IViewResults {
     setStockCard: (value: Array<IStockCard> | null) => void
     changeActiveElement:(value:string) => void
     setIsOpenView:(value:boolean) => void
-    setInputText:(value:string) => void
+    setInputText:(value:string) => void,
+    setTicker:(picedTicer: string) => void
+}
+
+export interface ITickerInput {
+    placeholder: string,
+    setTicker:(picedTicer: string) => void
 }

@@ -3,6 +3,7 @@ import alphavantageCryptoDataAdapter from "./adapters/alphavantageCryptoDataAdap
 import alphavantageStockDataAdapter from "./adapters/alphavantageStockDataAdapter"
 
 export const generateChartDate = (data:any,isCrypro:boolean):KLineData[] => {
+    if(!data) return null
     if(data["Note"]) return null
     if(data["Error Message"]) return null
     const normalizedData = isCrypro ? alphavantageCryptoDataAdapter(data) : alphavantageStockDataAdapter(data)

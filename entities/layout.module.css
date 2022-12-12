@@ -7,6 +7,7 @@
 .mainContainer{
   width:100vw;
   flex-grow: 8;
+  overflow-x: hidden;
 }
 
 .InputContainer {
@@ -18,10 +19,15 @@
 
 .predictPageContainer {
   flex-grow: 8;
-  max-width: 55rem;
+  max-width: 42rem;
   display: flex;
   justify-content: center;
   margin: auto;
+}
+.StatickViewContainer{
+  width: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 .header {
@@ -32,6 +38,8 @@
   top: 0;
   flex-shrink: 0;
   flex-grow: 1;
+  z-index: 99999;
+  background-color: white;
 }
 
 @media screen and (min-width: 48em) {

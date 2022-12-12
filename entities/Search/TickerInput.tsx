@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react"
 import TickerInputCss from './TickerInputCss.module.css'
 import ViewResults from "./ViewCards/ViewResults"
 import useInput from "../../features/input/useInput"
+import { ITickerInput } from "./model"
 
 
-const TickerInput: React.FC = () => {
+const TickerInput: React.FC<ITickerInput> = ({placeholder, setTicker}) => {
     const { keyHandler,
         stockCard,
         setStockCard,
@@ -15,8 +16,8 @@ const TickerInput: React.FC = () => {
         setSearchedCompany,
         changeInput,
         inputText,
-        setInputText
-    } = useInput()
+        setInputText,
+    } = useInput(setTicker)
 
     useEffect(() => {
         document.addEventListener('keydown', keyHandler)
@@ -49,8 +50,9 @@ const TickerInput: React.FC = () => {
     }
 
     return <div className={TickerInputCss.TickerInput}>
-        <Input value = {inputText}  onChange={changeInput} placeholder='Enter Ticker or company name' />
+        <Input value = {inputText}  onChange={changeInput} placeholder = {placeholder}  />
         <ViewResults
+            setTicker = {setTicker}
             isOpen={isOpenView}
             stockCard={stockCard}
             setStockCard={setStockCard}
