@@ -59,17 +59,17 @@ const StatickView: React.FC<ISubPage> = ({ ticker, comparedTicker, timePeriodO }
     }
 
     useEffect(() => {
-        if (isLoadingComparedTicker && isLoadingComparedTicker) {
-            const KdataTicker = generateChartDate(dataTicker, isCryproTicer)
-            const KdataCompareTicker = generateChartDate(dataComparedTicker, isCryproComparedTicer)
-            const domainData: IStatickDomainData = getStatistickCompareObject(KdataTicker, KdataCompareTicker)            
-            setRadarData(getDomainRadarData(domainData, ticker, comparedTicker))
+        // if (isLoadingComparedTicker && isLoadingComparedTicker) {
+        //     const KdataTicker = generateChartDate(dataTicker, isCryproTicer)
+        //     const KdataCompareTicker = generateChartDate(dataComparedTicker, isCryproComparedTicer)
+        //     const domainData: IStatickDomainData = getStatistickCompareObject(KdataTicker, KdataCompareTicker)            
+        //     setRadarData(getDomainRadarData(domainData, ticker, comparedTicker))
 
-            setLastData({
-                ticker: generateLastTime(getLastData(KdataTicker, timePeriodO)),
-                comapredTicker: generateLastTime(getLastData(KdataCompareTicker, timePeriodO))
-            })
-        }
+        //     setLastData({
+        //         ticker: generateLastTime(getLastData(KdataTicker, timePeriodO)),
+        //         comapredTicker: generateLastTime(getLastData(KdataCompareTicker, timePeriodO))
+        //     })
+        // }
     }, [dataTicker, dataComparedTicker, isLoadingDataTicker, isLoadingComparedTicker, domainFunction])
 
     const changeSelectDomain = (e: React.ChangeEvent<HTMLSelectElement>) => {

@@ -9,7 +9,7 @@ import { TimePeriod } from "../entities/Time/Model";
 const getTickersFromUrl = () => {
     const href = window.location.href
     const findedlist = href.match(/=\w+/g)
-    if(!findedlist) return []
+    if (!findedlist) return []
     const ticerArray = findedlist.map((val) => val.replace('=', ''))
     return ticerArray
 }
@@ -19,10 +19,10 @@ const comparePage: React.FC = () => {
     const [comparedTicker, setComparedTicker] = useState<string | null>(null)
     const [timePeriodO, setTimePeriodO] = useState<TimePeriod | null>(null)
     const [isError, setIsErorr] = useState<boolean>(false)
-    
+
     useEffect(() => {
         const ticerArray = getTickersFromUrl()
-        if(ticerArray.length < 3){
+        if (ticerArray.length < 3) {
             setIsErorr(true)
             return
         }
@@ -38,19 +38,7 @@ const comparePage: React.FC = () => {
         </Head>
 
         <Header pageHeader='predictSeries' pathLink='/' isBack={true} />
-        <PredictPageBody>
-            <>            {
-                isError && <Heading as='h1' textAlign={'center'} size='xl' noOfLines={3}>
-                    Error has accured
-                </Heading>
-            }
-                {
-                    ticker && comparedTicker && <>
-                        <StatickView timePeriodO={timePeriodO} ticker={ticker} comparedTicker={comparedTicker} />
-                    </>
-                }
-            </>
-        </PredictPageBody>
+        
     </>
 }
 export default comparePage
