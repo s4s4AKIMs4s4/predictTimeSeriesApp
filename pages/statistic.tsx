@@ -3,6 +3,10 @@ import Head from "next/head";
 import Layout from "../entities/Layout";
 import { useEffect, useRef, useState } from "react";
 import KlineChart from "../widgets/Search/chart/KLineChart";
+
+
+
+
 import { Heading } from "@chakra-ui/react";
 import predictPageStyle from "./predictPage.module.css"
 import Header from "../entities/Header";
