@@ -28,8 +28,8 @@ const SearchView: React.FC = () => {
                 <TickerInput setTicker={setCompatedTicker} placeholder={'Enter Ticker compared Company'} />
                 <form onSubmit = {(e:React.FormEvent) => {
                     e.preventDefault()
-                    console.log(e.currentTarget.time.value)
-                    navigateToComparePage(ticker, comparedTicker, parseInt(e.currentTarget.time.value))
+                    // console.log(e.currentTarget.time.value)
+                    // navigateToComparePage(ticker, comparedTicker, parseInt(e.currentTarget.time.value))
                 }} >
                     <RadioGroup name="time" defaultValue={String(TimePeriod.THREE_DAYS)}>
                         <HStack spacing='24px'>
