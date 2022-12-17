@@ -45,7 +45,7 @@ const useMetricks = () => {
 
     const getMode = (data: klinecharts.KLineData[], atribute:keyof klinecharts.KLineData) => {
         const modeAr = data.map((value) => value[atribute]).sort(compareNumbers)
-        return modeAr[parseInt(modeAr.length / 2)]
+        return modeAr[Number(modeAr.length / 2)]
     }
 
     const setMaxValue = (obj:IStatickData) => {
