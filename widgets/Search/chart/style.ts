@@ -98,7 +98,7 @@ export function generateChartStyle(graphtype: typeGraphEnum) {
         showRule: 'always',
         // 'standard' | 'rect'
         showType: 'standard',
-        labels: ['T', 'O', 'C', 'H', 'L', 'V'],
+        labels: ['Time: ', 'Open ', 'Close ', 'High '],
         values: null,
         defaultValue: 'n/a',
         rect: {

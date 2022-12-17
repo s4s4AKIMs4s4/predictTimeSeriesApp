@@ -48,13 +48,9 @@ const useMetricks = () => {
         return modeAr[parseInt(modeAr.length / 2)]
     }
 
-
     const setMaxValue = (obj:IStatickData) => {
         const maxValue = Math.max(...Object.values(obj))
         setMax(maxValue)        
-        // if(maxValue > max){
-        //     setMax(maxValue)
-        // }
     }
 
     const getModStatistic = (data: klinecharts.KLineData[], numberOfDays:number) => {
@@ -82,8 +78,6 @@ const useMetricks = () => {
         setMaxValue(obj)
         return obj
     }
-
-
 
     return {
         getStaticsValue,

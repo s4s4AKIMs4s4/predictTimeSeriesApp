@@ -53,19 +53,19 @@ export function generateTemplateCircle(): ShapeTemplate {
                       // 'solid'|'dash'
                       style: 'solid',
                       size: 20,
-                      color: '#47c553',
+                      color: 'red',
                       dashValue: [2, 2]
                     },
 
                     fill: {
-                        color:'#47c553',
+                        color:'red',
                         borderColor: '#47c553',
                         borderSize: '0', 
                         opacity:'0' 
                     },
                     text: {
                       style: 'fill',
-                      color: '#21f3b8',
+                      color: 'red',
                       size: 12,
                       family: 'Helvetica Neue',
                       weight: 'normal',

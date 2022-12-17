@@ -7,13 +7,26 @@ const useNavigate = () => {
     const navigateToPredictPage = (ticker:string) => {
         router.push(`/predict?ticker=${ticker}`)
     }
+
+    const navigateToStatistickPage = (ticker:string) => {
+        router.push(`/statistic?ticker=${ticker}`)
+        // statistic?ticker=MSFT
+    }
+
+
+    const navigateToSelectPage = () => {
+        router.push(`/select`)
+        // statistic?ticker=MSFT
+    }
     
     const navigateToComparePage = (ticker:string, comparedTicker:string, timePeriod:TimePeriod) => {
             router.push(`/comparePage?ticker=${ticker}&compared-ticker=${comparedTicker}&timePeriod=${timePeriod}`)
     }
     return {
         navigateToPredictPage,
-        navigateToComparePage
+        navigateToComparePage,
+        navigateToStatistickPage,
+        navigateToSelectPage
     }
 }
 export default useNavigate

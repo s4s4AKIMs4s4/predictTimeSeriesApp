@@ -25,8 +25,45 @@ interface IKlineProps {
 const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
     const isCrypro = useRef<boolean>(Stocks.find((value) => value.ticker === ticker)?.isCrypto)
     const { data, isLoading } = useGetMarcetplaceData(ticker)
+    const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false)
     const [currentChartData, setCurrentChartData] = useState<Array<IDataChart>>([])
     const currentChartObj = useRef<Chart | null>(null)
+
+    function annotationDrawExtend (ctx, coordinate, text) {
+        ctx.font = '12px Roboto'
+        ctx.fillStyle = '#2d6187'
+        ctx.strokeStyle = '#2d6187'
+    
+        const textWidth = ctx.measureText(text).width
+        const startX = coordinate.x
+        let startY = coordinate.y + 6
+        ctx.beginPath()
+        ctx.moveTo(startX, startY)
+        startY += 5
+        ctx.lineTo(startX - 4, startY)
+        ctx.lineTo(startX + 4, startY)
+        ctx.closePath()
+        ctx.fill()
+    
+        const rectX = startX - textWidth / 2 - 6
+        const rectY = startY
+        const rectWidth = textWidth + 12
+        const rectHeight = 28
+        const r = 2
+        ctx.beginPath()
+        ctx.moveTo(rectX + r, rectY)
+        ctx.arcTo(rectX + rectWidth, rectY, rectX + rectWidth, rectY + rectHeight, r)
+        ctx.arcTo(rectX + rectWidth, rectY + rectHeight, rectX, rectY + rectHeight, r)
+        ctx.arcTo(rectX, rectY + rectHeight, rectX, rectY, r)
+        ctx.arcTo(rectX, rectY, rectX + rectWidth, rectY, r)
+        ctx.closePath()
+        ctx.fill()
+    
+        ctx.fillStyle = '#fff'
+        ctx.textBaseline = 'middle'
+        ctx.textAlign = 'center'
+        ctx.fillText(text, startX, startY + 14)
+      }
 
     useEffect(() => {
         if (isLoading) return
@@ -34,8 +71,10 @@ const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
     }, [isLoading])
 
     const genetateChartData = () => {
+
         const Kdata = generateChartDate(data, isCrypro.current)
         setCurrentChartData(Kdata)
+        setIsDataLoaded(true)
     }
 
     const addToChartCircle = (dataIndex: number, price: number) => {
@@ -45,22 +84,35 @@ const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
             'candle_pane',
         )
     }
+
     const drawPridctedValue = (predictValue) => {
         addToChartCircle(currentChartData.length, predictValue)
     }
-    const renderChart = (predictValue) => {
+
+    
+    const subTechnicalIndicatorTypes = ['VOL', 'MACD', 'KDJ']
+
+    const renderChart = (predictValue?:number) => {
+        console.log('renderChart')
+        console.log('currentChartData')
+        console.log(currentChartData)
         const chart = klinecharts.init(`${'chart'}`);
         currentChartObj.current = chart
         chart.setStyleOptions(generateChartStyle(typeGraphEnum.AREA))
         chart.applyNewData(currentChartData);
         chart.addShapeTemplate(generateTemplateCircle())
-        drawPridctedValue(predictValue)
+  
+        
+        if(predictValue)
+            drawPridctedValue(predictValue)
     }
     return {
         renderChart,
         addToChartCircle,
         drawPridctedValue,
         currentChartData,
+        isDataLoaded,
+        currentChartObj,
     }
 }
 export default useKlineChart

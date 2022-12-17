@@ -1,0 +1,24 @@
+.network__form{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.static__table{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.network__trainButton{
+    margin-bottom: 10px;
+}
+.network__indicators{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+}
+.indicator{
+    color:#4A5568;
+    cursor:pointer
+}
+.indicator__active{
+    color:#319795;
+}
+

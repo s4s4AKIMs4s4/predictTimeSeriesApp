@@ -6,7 +6,7 @@ export const MockAppleData = {
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
-    "Time Series (Daily)": {
+    "Weekly Time Series": {
         "2022-12-06": {
             "1. open": "147.075",
             "2. high": "147.3",

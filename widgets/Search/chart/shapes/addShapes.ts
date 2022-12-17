@@ -12,7 +12,7 @@ export const createCircle = (dataIndex:number,close:number, name:string = 'circl
             // 'solid' | 'dash'
             style: 'solid',
             size: 20,
-            color: '#47c55',
+            color: 'red',
             dashValue: [2, 2]
         },
         },

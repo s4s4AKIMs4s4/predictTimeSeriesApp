@@ -6,8 +6,12 @@ import { IDataChart } from "../chart/useKlineChart"
 const useRLNetwork = () => {
     const [windowSize, setWindowSize] = useState<number>(20)
     const [inputEpoch, setInputEpoch] = useState<number>(5)
+
     const [inputLearningrate, setInputLearningrate] = useState<number>(0.01)
     const [inputHiddenlayers, setInputHiddenlayers] = useState<number>(4)
+
+
+    
 
     const dataSmaAdapter = (data) => {
         return data.map((smeObject) => {
@@ -56,11 +60,19 @@ const useRLNetwork = () => {
         const predictedValues = makePredictions(predictedData, model, maxThreshold)
         return predictedValues
     }
+
     return {
         prepareDate,
         trainNetwork,
         makePrediction,
-        inputEpoch
+        inputEpoch,
+        setWindowSize,
+        setInputEpoch,
+        setInputLearningrate,
+        setInputHiddenlayers,
+        windowSize,
+        inputLearningrate,
+        inputHiddenlayers
     }
 
 }

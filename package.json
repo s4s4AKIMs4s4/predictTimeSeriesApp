@@ -12,6 +12,7 @@
     "@tensorflow/tfjs": "^4.0.0",
     "framer-motion": "^6.5.1",
     "klinecharts": "^8.6.3",
+    "moment": "^2.29.4",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",

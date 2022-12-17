@@ -3,8 +3,10 @@ import adapter from "./adapter"
 //TODO: fix any
 const alphavantageStockDataAdapter = (data:any) => {
     const {serializeTime} = adapter()
-
-    const StockEntyes = Object.entries( data["Time Series (Daily)"])
+    // Weekly Time Series
+    // Time Series (Daily)
+    console.log(data)
+    const StockEntyes = Object.entries( data["Weekly Time Series"])
     return StockEntyes.map(([timeStr,value]) => {
         const {year, mounth, day} = serializeTime(timeStr)
         const timestamp = new Date(year, mounth, day).getTime()

@@ -1,22 +1,20 @@
+import React from "react"
 import Head from "next/head";
 import Layout from "../entities/Layout";
 import { useEffect, useRef, useState } from "react";
-import KlineChart from "../widgets/Search/chart/KlineChartPredicted";
-import {Heading} from "@chakra-ui/react";
+import KlineChart from "../widgets/Search/chart/KLineChart";
+import { Heading } from "@chakra-ui/react";
 import predictPageStyle from "./predictPage.module.css"
 import Header from "../entities/Header";
 import PredictPageBody from "../entities/Containers/PredictPageContainer";
+import { UrlErrorEnum } from "./predict";
+import inputPage from './inputPage.module.css'
+import MainTimeSiresBody from '../entities/Containers/InputTimeSiresContainer';
+import StatickContainer from "../entities/Containers/StaticContainer";
 
-export interface IFirstPost {
-    data: string
-}
 
-export enum UrlErrorEnum {
-    NOT_DEFINED = 'NOT_DEFINED',
-    ERROR = 'ERROR',
-    CORRECT = 'CORRECT'
-}
-const PredictPage: React.FC = () => {
+
+const statistic: React.FC = () => {
     const ticker = useRef<string | null>(null)
     const [parseUrlError, setParseUrlError] = useState<UrlErrorEnum>(UrlErrorEnum.NOT_DEFINED)
 
@@ -40,23 +38,21 @@ const PredictPage: React.FC = () => {
         if (parseUrlError === UrlErrorEnum.NOT_DEFINED) return <></>
     }
 
-    return <Layout>
+    return <>
         <Head>
-            <title> {ticker.current} predict </title>
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header pageHeader='predictSeries' pathLink='/' isBack={true} />
-        <PredictPageBody>
-            <div className={predictPageStyle.chartViewContainer}>
-                <div className={predictPageStyle.chartView}>
+        <StatickContainer>
+            <div className={inputPage.inputViewWrapper}>
+                <div className={inputPage.inputView}>
                     <Heading as='h1' textAlign={'center'} size='xl' noOfLines={3}>
-                        Predict time series for {ticker.current}
+                        Статитистика
                     </Heading>
                     {renderChart()}
                 </div>
             </div>
-        </PredictPageBody>
-    </Layout>
+        </StatickContainer>
+    </>
 }
-
-export default PredictPage  
+export default statistic
