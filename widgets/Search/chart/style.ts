@@ -30,7 +30,6 @@ export function generateChartStyle(graphtype: typeGraphEnum) {
         top: 0.2,
         bottom: 0.1
       },
-      // 'candle_solid'|'candle_stroke'|'candle_up_stroke'|'candle_down_stroke'|'ohlc'|'area'
       type: graphtype,
       bar: {
         upColor: '#26A69A',

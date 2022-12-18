@@ -1,6 +1,13 @@
-.searchCard {
+.searchCard{
     max-width:100% !important;
+    cursor: pointer;
 }
+.searchCard:hover{
+
+    background-color:#319795;
+    color:white;
+}
+
 
 .searchCard_inactice{
     background-color: white;

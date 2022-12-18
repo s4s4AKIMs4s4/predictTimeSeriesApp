@@ -50,8 +50,8 @@ const statistic: React.FC = () => {
         <StatickContainer>
             <div className={inputPage.inputViewWrapper}>
                 <div className={inputPage.inputView}>
-                    <Heading as='h1' textAlign={'center'} size='xl' noOfLines={3}>
-                        Статитистика
+                    <Heading className={inputPage.inputView__header} as='h1' textAlign={'center'} size='xl' noOfLines={3}>
+                        Рыночная информация для {ticker.current}
                     </Heading>
                     {renderChart()}
                 </div>

@@ -9,10 +9,17 @@
 .network__trainButton{
     margin-bottom: 10px;
 }
+.indicator__wrapper{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    justify-content: space-between;
+}
 .network__indicators{
     display: flex;
     flex-direction: row;
     column-gap: 5px;
+    justify-content: space-between;
 }
 .indicator{
     color:#4A5568;
@@ -20,5 +27,16 @@
 }
 .indicator__active{
     color:#319795;
+}
+.learningLoadingWrapper{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-bottom: 10px;
+}
+.chartHeader{
+    margin-bottom: 10px;
 }
 

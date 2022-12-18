@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import inputPage from './inputPage.module.css'
+import inputPageCSS from './inputPage.module.css'
 import TickerProvider from '../Context/Providers/TickerProvider';
 import SearchView from '../widgets/Search/SearchView';
 import Layout from '../entities/Layout';
 import Header from '../entities/Header';
 import MainTimeSiresBody from '../entities/Containers/InputTimeSiresContainer';
-import { Button, Text } from '@chakra-ui/react';
+import { Button, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import WizardContainer from '../entities/Containers/WizardContainer';
 import { useMemo, useState } from 'react';
@@ -21,24 +21,24 @@ interface IWizrardSteps {
 }
 
 export default function InputPage() {
-  const {navigateToSelectPage} = useNavigate()
+  const { navigateToSelectPage } = useNavigate()
 
   const [wizardSteps, setWizardSteps] = useState<Array<IWizrardSteps>>([
     {
-      imageSrc: '/images/parametrs.png',
-      description: 'ky',
+      imageSrc: '/images/Screenshot_5.png',
+      description: 'Изучить финансовое состояние и историю торгов выбранной акции',
       isActice: true,
       index: 1,
     },
     {
-      imageSrc: '/images/indicators.png',
-      description: 'sa',
+      imageSrc: '/images/Screenshot_3.png',
+      description: 'Увидеть общую статистиику по торгам',
       isActice: false,
       index: 2,
     },
     {
-      imageSrc: '/images/prediction.png',
-      description: 'cv',
+      imageSrc: '/images/Screenshot_6.png',
+      description: 'На основе полученой информации настроить нейросеть и сделать прогноз на следующий день',
       isActice: false,
       index: 3,
     },
@@ -65,20 +65,20 @@ export default function InputPage() {
         alt="parametrs"
       />
       <div>
-        <Text fontSize='2xl'>{currentActiveCard.description}</Text>
-        {
-          currentActiveCard.index === wizardSteps.length ?
-            <Button onClick={navigateToSelectPage} colorScheme='teal' size='lg'>
-              Выбрать тикер для прогноза
-            </Button>
-            : <Button onClick={getNextStep} colorScheme='teal' size='lg'>
-              Дальше
-            </Button>
-        }
-
+        <Text align='center' fontSize='lg'>{currentActiveCard.description}</Text>
+        <div className={inputPageCSS.wizardCard__button}>
+          {
+            currentActiveCard.index === wizardSteps.length ?
+              <Button onClick={navigateToSelectPage} colorScheme='teal' size='lg'>
+                Выбрать тикер для прогноза
+              </Button>
+              : <Button onClick={getNextStep} colorScheme='teal' size='lg'>
+                Дальше
+              </Button>
+          }
+        </div>
       </div>
     </>
-
   }, [wizardSteps])
 
   return (
@@ -89,9 +89,13 @@ export default function InputPage() {
       </Head>
       <Header pageHeader='Home' pathLink='/' isBack={false} />
       <WizardContainer>
-        <div>
-          {wizardCardJsx}
-
+        <div className={inputPageCSS.wizardWrapper}>
+          <Heading as='h1' textAlign={'center'} size='xl' noOfLines={3}>
+            Приложение позволяет
+          </Heading>
+          <div className={inputPageCSS.wizardCard}>
+            {wizardCardJsx}
+          </div>
         </div>
       </WizardContainer>
     </Layout>

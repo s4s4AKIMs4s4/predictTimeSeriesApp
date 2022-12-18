@@ -17,6 +17,12 @@ export interface IDataChart {
     turnover?: number,
 }
 
+interface IrenderChart{
+    predictValue?:number, 
+    graphType?:typeGraphEnum
+}
+
+
 interface IKlineProps {
     ticker: string,
     netWorkIsLoading: boolean
@@ -91,14 +97,15 @@ const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
 
     
     const subTechnicalIndicatorTypes = ['VOL', 'MACD', 'KDJ']
-
-    const renderChart = (predictValue?:number) => {
+    
+    const renderChart = ({predictValue, graphType}:IrenderChart) => {
         console.log('renderChart')
         console.log('currentChartData')
         console.log(currentChartData)
         const chart = klinecharts.init(`${'chart'}`);
         currentChartObj.current = chart
-        chart.setStyleOptions(generateChartStyle(typeGraphEnum.AREA))
+        
+        chart.setStyleOptions(generateChartStyle(graphType ? graphType : typeGraphEnum.AREA))
         chart.applyNewData(currentChartData);
         chart.addShapeTemplate(generateTemplateCircle())
   
@@ -115,4 +122,5 @@ const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
         currentChartObj,
     }
 }
+
 export default useKlineChart

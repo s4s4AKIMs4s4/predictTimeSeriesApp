@@ -29,16 +29,6 @@
 
     },
     {
-        "ticker": "BRK/A",
-        "projectName": "Berkshire Hathaway Inc.",
-        "isCrypto": false
-    },
-    {
-        "ticker": "BRK/B",
-        "projectName": "Berkshire Hathaway Inc.",
-        "isCrypto": false
-    },
-    {
         "ticker": "TSLA",
         "projectName": "Tesla, Inc. Common Stock",
         "isCrypto": false
@@ -56,11 +46,6 @@
     {
         "ticker": "JNJ",
         "projectName": "Johnson & Johnson Common Stock",
-        "isCrypto": false
-    },
-    {
-        "ticker": "V",
-        "projectName": "Visa Inc",
         "isCrypto": false
     },
     {

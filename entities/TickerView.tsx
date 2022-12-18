@@ -27,12 +27,6 @@ const TickerView: React.FC = () => {
         })
     }, [])
 
-    const buttonClick = () => {
-
-
-        alert(ticker)
-    }
-
     return <>
         <Heading as='h1' textAlign={'center'} size='xl' noOfLines={3}>
             Выберите тикер
@@ -40,9 +34,6 @@ const TickerView: React.FC = () => {
         <div className = {TickerViewCss.TickerPickWrapper}>
             {allStocks}
         </div>
-        <Button onClick = {buttonClick} colorScheme='teal' size='md'>
-            Compare
-        </Button>   
     </>
 }
 

@@ -3,7 +3,7 @@ import CompanySearchCss from './CompanySearchCss.module.css'
 import {  IStockCard } from "./model";
 
 const TickerSearch: React.FC<Omit<IStockCard, 'isActice'> > = ({ projectName, ticker }) => {
-    return <div className={CompanySearchCss.searchCard}>
+    return <div>
         <Box
             className = {
                 `${CompanySearchCss.searchCard} ${CompanySearchCss.searchCard_inactice}`}
