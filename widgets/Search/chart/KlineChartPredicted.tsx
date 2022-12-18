@@ -59,9 +59,9 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
     }
 
     useEffect(() => {
-        if (predictValues !== null && !netWorkIsLoading) {
-            renderChart(predictValues)
-        }
+        // if (predictValues !== null && !netWorkIsLoading) {
+        //     renderChart(predictValues)
+        // }
     }, [netWorkIsLoading, predictValues])
 
     useEffect(() => {
