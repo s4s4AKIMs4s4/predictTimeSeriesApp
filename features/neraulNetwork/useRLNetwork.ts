@@ -4,7 +4,7 @@ import { computeSMA, getMaxThreshold, makePredictions, trainModel } from "./Recu
 import { IDataChart } from "../chart/useKlineChart"
 
 const useRLNetwork = () => {
-    const [windowSize, setWindowSize] = useState<number>(20)
+    const [windowSize, setWindowSize] = useState<number>(5)
     const [inputEpoch, setInputEpoch] = useState<number>(5)
 
     const [inputLearningrate, setInputLearningrate] = useState<number>(0.01)
