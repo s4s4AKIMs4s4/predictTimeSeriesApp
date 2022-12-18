@@ -32,7 +32,7 @@ export default function InputPage() {
     },
     {
       imageSrc: '/images/Screenshot_3.png',
-      description: 'Увидеть общую статистиику по торгам',
+      description: 'Увидеть общую статистику по торгам',
       isActice: false,
       index: 2,
     },

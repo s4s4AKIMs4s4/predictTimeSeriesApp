@@ -72,11 +72,6 @@
         "isCrypto": true
     },
     {
-        "ticker": "USDT",
-        "projectName": "Tether",
-        "isCrypto": true
-    },
-    {
         "ticker": "BNB",
         "projectName": "BNB",
         "isCrypto": true
