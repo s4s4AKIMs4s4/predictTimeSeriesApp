@@ -76,10 +76,16 @@ const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
         genetateChartData()
     }, [isLoading])
 
-    const genetateChartData = () => {
 
+    const inverData  = (Kdata:klinecharts.KLineData[]) => {
+        
+    }
+
+    
+
+    const genetateChartData = () => {
         const Kdata = generateChartDate(data, isCrypro.current)
-        setCurrentChartData(Kdata)
+        setCurrentChartData(Kdata.reverse())
         setIsDataLoaded(true)
     }
 
@@ -91,24 +97,16 @@ const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
         )
     }
 
-    const drawPridctedValue = (predictValue) => {
-        addToChartCircle(currentChartData.length, predictValue)
+    const drawPridctedValue = (predictValue, windowSize) => {
+        addToChartCircle(currentChartData.length + windowSize - 1, predictValue)
     }
-
-    
     const subTechnicalIndicatorTypes = ['VOL', 'MACD', 'KDJ']
-    
     const renderChart = ({predictValue, graphType}:IrenderChart) => {
         const chart = klinecharts.init(`${'chart'}`);
-        currentChartObj.current = chart
-        
+        currentChartObj.current = chart        
         chart.setStyleOptions(generateChartStyle(graphType ? graphType : typeGraphEnum.AREA))
         chart.applyNewData(currentChartData);
         chart.addShapeTemplate(generateTemplateCircle())
-  
-        
-        if(predictValue)
-            drawPridctedValue(predictValue)
     }
     return {
         renderChart,

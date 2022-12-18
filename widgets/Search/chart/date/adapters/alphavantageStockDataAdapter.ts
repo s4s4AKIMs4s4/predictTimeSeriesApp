@@ -8,7 +8,8 @@ const alphavantageStockDataAdapter = (data:any) => {
     const StockEntyes = Object.entries( data["Weekly Time Series"])
     return StockEntyes.map(([timeStr,value]) => {
         const {year, mounth, day} = serializeTime(timeStr)
-        const timestamp = new Date(year, mounth, day).getTime()
+        console.log(year, mounth, day)
+        const timestamp = new Date(year, mounth - 1, day).getTime()
 
         const open = parseFloat(value['1. open'])
         const close = parseFloat(value['4. close'])

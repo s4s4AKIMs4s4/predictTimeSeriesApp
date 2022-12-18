@@ -11,11 +11,6 @@
 
     },
     {
-        "ticker": "GOOG",
-        "projectName": "Alphabet Inc. Class C Capital Stock",
-        "isCrypto": false
-    },
-    {
         "ticker": "GOOGL",
         "projectName": "Alphabet Inc. Class A Common Stock",
         "isCrypto": false

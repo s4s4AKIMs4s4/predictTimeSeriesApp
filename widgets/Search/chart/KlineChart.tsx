@@ -130,7 +130,7 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
 
     useEffect(() => {
         if (predictValues) {
-            drawPridctedValue(predictValues)
+            drawPridctedValue(predictValues,windowSize)
         }
     }, [predictValues])
 
