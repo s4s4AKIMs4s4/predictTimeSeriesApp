@@ -99,9 +99,6 @@ const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
     const subTechnicalIndicatorTypes = ['VOL', 'MACD', 'KDJ']
     
     const renderChart = ({predictValue, graphType}:IrenderChart) => {
-        console.log('renderChart')
-        console.log('currentChartData')
-        console.log(currentChartData)
         const chart = klinecharts.init(`${'chart'}`);
         currentChartObj.current = chart
         

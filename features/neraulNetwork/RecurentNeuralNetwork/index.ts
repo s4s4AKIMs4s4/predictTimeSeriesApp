@@ -80,8 +80,6 @@ export const trainModel = async (model_params, maxThreshold, callback) => {
         optimizer: tf.train.adam(learning_rate),
         loss: 'meanSquaredError'
     });
-    console.log('x')
-    console.log(X)
 
     const hist = await model.fit(xs, ys,
         {

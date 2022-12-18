@@ -2,7 +2,7 @@ import React from "react"
 import Head from "next/head";
 import Layout from "../entities/Layout";
 import { useEffect, useRef, useState } from "react";
-import KlineChart from "../widgets/Search/chart/KLineChart";
+import KlineChart from "../widgets/Search/chart/KlineChart";
 
 
 

@@ -7,9 +7,6 @@ import { pickApiForHandle } from "./useGetMarcetplaceData"
 import Stocks from '../../CompanyInformation/Stocks.json'
 
 const useGetMarcetplacesData = (ticker: string, comparedTicker: string) => {
-    console.log('ticker')
-    console.log(ticker)
-    // debugger
     if(!ticker ||  !comparedTicker) return [{
         dataTicker:null,
         isLoadingDataTicker:null,
@@ -24,7 +21,6 @@ const useGetMarcetplacesData = (ticker: string, comparedTicker: string) => {
 
     const isNoteErrorDate = (data) => {
         if(data) {
-            console.log(data)
             if(data['Note']){
                 return true
             }
@@ -41,8 +37,6 @@ const useGetMarcetplacesData = (ticker: string, comparedTicker: string) => {
         pickApiForHandle(isCryproComparedTicer, comparedTicker), fetcher)
     
 
-    console.log('data')
-    console.log(dataTicker)
     // const dataTicker = MockAppleData
     // const errorTicker = false
     // const comparedDataTicker = MockCryptoData
@@ -54,14 +48,10 @@ const useGetMarcetplacesData = (ticker: string, comparedTicker: string) => {
 
 
     // const spec = dataTicker ?  dataTicker['NOTE'] : false
-    console.log('noteError')
-    console.log(noteError, noteErrorCompared )
 
 
     const isErrorDataTicker = errorTicker || noteError
     const isComparedErrorTicker = comparedErrorTicker ||  noteErrorCompared
-    console.log('isErrorDataTicker, isComparedErrorTicker')
-    console.log(isErrorDataTicker, isComparedErrorTicker)
 
 
 

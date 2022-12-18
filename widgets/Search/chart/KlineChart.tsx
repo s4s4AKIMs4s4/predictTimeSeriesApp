@@ -371,7 +371,7 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
                                 </Tr>
                                 <Tr>
                                     <Td>Значене функции потерь</Td>
-                                    <Td isNumeric>{lastLoss.toFixed(2)} </Td>
+                                    <Td isNumeric>{lastLoss.toFixed(7)} </Td>
                                 </Tr>
                             </Tbody>
                         </Table>

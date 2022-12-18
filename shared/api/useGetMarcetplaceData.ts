@@ -13,8 +13,10 @@ export const pickApiForHandle = (isCrypro: boolean, ticker) => {
 }
 
 const useGetMarcetplaceData = (ticker: string) => {
+
     const isCrypro = Stocks.find((value) => value.ticker === ticker)?.isCrypto
     const { data, error } = useSWR(pickApiForHandle(isCrypro, ticker), fetcher)
+
     // const isCrypro = Stocks.find((value) => value.ticker === 'BTC')?.isCrypto
     // const data = MockAppleData
     // const error = null

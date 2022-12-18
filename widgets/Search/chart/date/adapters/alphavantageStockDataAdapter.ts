@@ -5,7 +5,6 @@ const alphavantageStockDataAdapter = (data:any) => {
     const {serializeTime} = adapter()
     // Weekly Time Series
     // Time Series (Daily)
-    console.log(data)
     const StockEntyes = Object.entries( data["Weekly Time Series"])
     return StockEntyes.map(([timeStr,value]) => {
         const {year, mounth, day} = serializeTime(timeStr)

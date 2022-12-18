@@ -27,8 +27,6 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
     
     useEffect(() => {
 
-        console.log('ticker')
-        console.log(ticker)
 
     }, [])
 
