@@ -14,7 +14,7 @@ const useStaticValues = (data: klinecharts.KLineData[]) => {
 
     const getMode = (atribute:keyof klinecharts.KLineData) => {
         const modeAr = data.map((value) => value[atribute]).sort(compareNumbers)
-        return modeAr[Number(modeAr.length / 2)]
+        return modeAr[Math.trunc(Number(modeAr.length / 2))]
     }
 
     const getTimeAgo = () => {

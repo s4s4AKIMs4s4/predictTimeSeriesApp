@@ -26,13 +26,13 @@ export default function InputPage() {
   const [wizardSteps, setWizardSteps] = useState<Array<IWizrardSteps>>([
     {
       imageSrc: '/images/Screenshot_5.png',
-      description: 'Изучить финансовое состояние и историю торгов выбранной акции',
+      description: 'Изучить финансовое состояние и историю торгов по выбранной акции',
       isActice: true,
       index: 1,
     },
     {
       imageSrc: '/images/Screenshot_3.png',
-      description: 'Увидеть общую статистику по торгам',
+      description: 'Изучить общую статистику по торгам',
       isActice: false,
       index: 2,
     },

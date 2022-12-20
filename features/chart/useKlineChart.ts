@@ -98,7 +98,7 @@ const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
     }
 
     const drawPridctedValue = (predictValue, windowSize) => {
-        addToChartCircle(currentChartData.length + windowSize - 1, predictValue)
+        addToChartCircle(currentChartData.length, predictValue)
     }
     const subTechnicalIndicatorTypes = ['VOL', 'MACD', 'KDJ']
     const renderChart = ({predictValue, graphType}:IrenderChart) => {

@@ -285,7 +285,7 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
                     <NumberInput
                         onChange={(valueString) => setWindowSize(Number(valueString))}
                         value={windowSize}
-                        max={50}
+                        max={200}
                     >
                         <NumberInputField />
                         <NumberInputStepper>
@@ -308,7 +308,7 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
                         </NumberInputStepper>
                     </NumberInput>
 
-                    <FormLabel>input Learning rate:</FormLabel>
+                    <FormLabel>Learning rate:</FormLabel>
                     <NumberInput
                         onChange={(valueString) => setInputLearningrate(Number(valueString))}
                         value={inputLearningrate}
@@ -321,7 +321,7 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
                         </NumberInputStepper>
                     </NumberInput>
 
-                    <FormLabel>input Hidden layers:</FormLabel>
+                    <FormLabel>Number of RNN blocks:</FormLabel>
                     <NumberInput
                         onChange={(valueString) => setInputHiddenlayers(Number(valueString))}
                         value={inputHiddenlayers}
@@ -338,10 +338,6 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
                 {/* </div> */}
                 <Button className={KlineChartCss.network__trainButton} colorScheme='teal' size='md' onClick={handleOpenModalClick}> Обучить сеть </Button>
                 <div></div>
-
-
-
-
 
                 {
                     netWorkIsLoading && <>
@@ -366,11 +362,11 @@ const KlineChart = React.forwardRef<string | null, any>((props, ref) => {
                             </Thead>
                             <Tbody>
                                 <Tr>
-                                    <Td>Спрогонозированное значение</Td>
+                                    <Td>Спрогнозированное значение</Td>
                                     <Td isNumeric> {predictValues.toFixed(2)}</Td>
                                 </Tr>
                                 <Tr>
-                                    <Td>Значене функции потерь</Td>
+                                    <Td>Значение функции потерь</Td>
                                     <Td isNumeric>{lastLoss.toFixed(7)} </Td>
                                 </Tr>
                             </Tbody>
