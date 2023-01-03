@@ -8,6 +8,7 @@ import { Link } from "@chakra-ui/react";
 import useNavigate from "../../features/useNavigate";
 import { TimePeriod } from "../../entities/Time/Model";
 
+
 const SearchView: React.FC = () => {
     const { ticker, setTicker, setCompatedTicker, comparedTicker } =
         useContext(TickerContext);
