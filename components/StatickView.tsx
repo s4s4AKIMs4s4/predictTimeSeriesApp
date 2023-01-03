@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import useGetMarcetplacesData from "../shared/api/useGetMarcetplacesData";
-import { generateChartDate } from "../widgets/search/chart/date";
 import Stocks from "../CompanyInformation/Stocks.json";
 import useMetricks, {
     IStatickDomainData
