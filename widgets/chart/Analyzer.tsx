@@ -9,13 +9,10 @@ import React from "react";
 import {
     Heading,
 } from "@chakra-ui/react";
-import useMetricks from "../../features/metrics.tsx/useMetricks";
-import useStaticValues from "../../features/metrics.tsx/useStaticValues";
 import {
     Button,
 } from "@chakra-ui/react";
 import KlineChartCss from "./KlineChartCss.module.css";
-import { typeGraphEnum } from "./style";
 import Chart from "./FinancialChart";
 import CommonInformationTable from "../../entities/tables/CommonInformationTable";
 import SettingML from "../../entities/SettingML";
