@@ -1,7 +1,6 @@
 import Head from "next/head";
 import inputPage from "./inputPage.module.css";
 import TickerProvider from "../Context/Providers/TickerProvider";
-import SearchView from "../widgets/search/SearchView";
 import Layout from "../entities/Layout";
 import Header from "../entities/Header";
 import MainTimeSiresBody from "../entities/Containers/InputTimeSiresContainer";
