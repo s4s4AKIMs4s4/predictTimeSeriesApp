@@ -1,3 +1,3 @@
-export interface ICircularProgres{
-    circularProgressValue: number
+export interface ICircularProgres {
+    circularProgressValue: number;
 }

@@ -1,5 +1,5 @@
 export interface IStockCard {
-    ticker: string,
-    projectName: string,
-    isActice: boolean
+    ticker: string;
+    projectName: string;
+    isActice: boolean;
 }

@@ -1,18 +1,16 @@
-.searchCard{
-    max-width:100% !important;
+.searchCard {
+    max-width: 100% !important;
     cursor: pointer;
 }
-.searchCard:hover{
-
-    background-color:#319795;
-    color:white;
+.searchCard:hover {
+    background-color: #319795;
+    color: white;
 }
 
-
-.searchCard_inactice{
+.searchCard_inactice {
     background-color: white;
 }
 
-.searchCard_actice{
+.searchCard_actice {
     background-color: gray;
 }

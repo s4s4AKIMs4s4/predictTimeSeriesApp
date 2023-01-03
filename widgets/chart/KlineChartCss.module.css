@@ -1,42 +1,41 @@
-.network__form{
+.network__form {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.static__table{
+.static__table {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.network__trainButton{
+.network__trainButton {
     margin-bottom: 10px;
 }
-.indicator__wrapper{
+.indicator__wrapper {
     display: flex;
     flex-direction: row;
     column-gap: 5px;
     justify-content: space-between;
 }
-.network__indicators{
+.network__indicators {
     display: flex;
     flex-direction: row;
     column-gap: 5px;
     justify-content: space-between;
 }
-.indicator{
-    color:#4A5568;
-    cursor:pointer
+.indicator {
+    color: #4a5568;
+    cursor: pointer;
 }
-.indicator__active{
-    color:#319795;
+.indicator__active {
+    color: #319795;
 }
-.learningLoadingWrapper{
-    display:flex;
+.learningLoadingWrapper {
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     row-gap: 10px;
     margin-bottom: 10px;
 }
-.chartHeader{
+.chartHeader {
     margin-bottom: 10px;
 }
-

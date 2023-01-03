@@ -1,14 +1,13 @@
 [
     {
         "ticker": "AAPL",
-        "projectName" : "Apple Inc.",
+        "projectName": "Apple Inc.",
         "isCrypto": false
     },
     {
         "ticker": "MSFT",
-        "projectName":"Microsoft Corporation Common Stock",
+        "projectName": "Microsoft Corporation Common Stock",
         "isCrypto": false
-
     },
     {
         "ticker": "GOOGL",
@@ -19,7 +18,6 @@
         "ticker": "AMZN",
         "projectName": "Amazon.com, Inc. Common Stock",
         "isCrypto": false
-
     },
     {
         "ticker": "TSLA",

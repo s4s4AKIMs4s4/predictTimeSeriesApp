@@ -1,41 +1,35 @@
-.wizardWrapper{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width:500px;
-  row-gap: 30px;
+.wizardWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    row-gap: 30px;
 }
-.wizardCard{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width:400px; 
-  row-gap: 10px;
+.wizardCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    row-gap: 10px;
 }
-.wizardCard__button{
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
+.wizardCard__button {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
-.inputViewWrapper{
-   height:100%;
-   display: flex;
-   justify-content: center;
-   /* align-items: center; */
-}
-
-.inputView{
-  width:75%;
-  max-width: 39em;
-}
-.inputView__header{
-  margin-bottom: 30px;
+.inputViewWrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
 }
 
-
-
-
-
-
+.inputView {
+    width: 75%;
+    max-width: 39em;
+}
+.inputView__header {
+    margin-bottom: 30px;
+}

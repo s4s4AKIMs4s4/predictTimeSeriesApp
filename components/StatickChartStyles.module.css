@@ -1,18 +1,16 @@
-.radarСharsView{
-
+.radarСharsView {
 }
-.radarСharsView__item{
-   margin-bottom: 20px;
+.radarСharsView__item {
+    margin-bottom: 20px;
 }
-.synchronizationView{
-
+.synchronizationView {
 }
 
-.synchronizationView__header{
+.synchronizationView__header {
     margin-top: 2em;
     margin-bottom: 20px;
 }
 
-.synchronizationView__item{
+.synchronizationView__item {
     margin-bottom: 20px;
 }

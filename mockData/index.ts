@@ -1008,7 +1008,7 @@ export const MockAppleData = {
             "8. split coefficient": "1.0"
         }
     }
-}
+};
 export const MochETHData = {
     "Meta Data": {
         "1. Information": "Daily Prices and Volumes for Digital Currency",
@@ -13021,8 +13021,7 @@ export const MochETHData = {
             "6. market cap (USD)": "1089679.15370000"
         }
     }
-}
-
+};
 
 export const MockCryptoData = {
     "Meta Data": {
@@ -25036,4 +25035,4 @@ export const MockCryptoData = {
             "6. market cap (USD)": "62422.39522400"
         }
     }
-}
+};

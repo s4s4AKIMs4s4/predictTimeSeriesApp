@@ -6,23 +6,23 @@ interface AuxProps {
 }
 
 const TickerProvider = ({ children }: AuxProps) => {
-    const [pickedTicker, setPickedTicker] = useState<null | string>(null)
-    const [copmaredTicer, setcopmaredTicer] = useState<null | string>(null)
-    
-    return <>
-        <TickerContext.Provider
-            value={
-                {
+    const [pickedTicker, setPickedTicker] = useState<null | string>(null);
+    const [copmaredTicer, setcopmaredTicer] = useState<null | string>(null);
+
+    return (
+        <>
+            <TickerContext.Provider
+                value={{
                     ticker: pickedTicker,
                     setTicker: setPickedTicker,
-                    setCompatedTicker:setcopmaredTicer,
-                    comparedTicker:copmaredTicer
-                }
-            }
-        >
-            {children}
-        </TickerContext.Provider>
-    </>
-}
+                    setCompatedTicker: setcopmaredTicer,
+                    comparedTicker: copmaredTicer
+                }}
+            >
+                {children}
+            </TickerContext.Provider>
+        </>
+    );
+};
 
-export default TickerProvider
+export default TickerProvider;

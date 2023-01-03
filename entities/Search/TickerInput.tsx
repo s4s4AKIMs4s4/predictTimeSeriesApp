@@ -1,13 +1,13 @@
-import { Input } from "@chakra-ui/react"
-import React, { useEffect, useState } from "react"
-import TickerInputCss from './TickerInputCss.module.css'
-import ViewResults from "./ViewCards/ViewResults"
-import useInput from "../../features/input/useInput"
-import { ITickerInput } from "./model"
+import { Input } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import TickerInputCss from "./TickerInputCss.module.css";
+import ViewResults from "./ViewCards/ViewResults";
+import useInput from "../../features/input/useInput";
+import { ITickerInput } from "./model";
 
-
-const TickerInput: React.FC<ITickerInput> = ({placeholder, setTicker}) => {
-    const { keyHandler,
+const TickerInput: React.FC<ITickerInput> = ({ placeholder, setTicker }) => {
+    const {
+        keyHandler,
         stockCard,
         setStockCard,
         isOpenView,
@@ -16,50 +16,55 @@ const TickerInput: React.FC<ITickerInput> = ({placeholder, setTicker}) => {
         setSearchedCompany,
         changeInput,
         inputText,
-        setInputText,
-    } = useInput(setTicker)
+        setInputText
+    } = useInput(setTicker);
 
     useEffect(() => {
-        document.addEventListener('keydown', keyHandler)
+        document.addEventListener("keydown", keyHandler);
         return () => {
-            document.removeEventListener('keydown', keyHandler)
-        }
-    }, [stockCard, isOpenView])
-
+            document.removeEventListener("keydown", keyHandler);
+        };
+    }, [stockCard, isOpenView]);
 
     useEffect(() => {
         const closeSearch = () => {
-            setIsOpenView(false)
-        }
-        document.addEventListener('click', closeSearch)
+            setIsOpenView(false);
+        };
+        document.addEventListener("click", closeSearch);
 
         return () => {
-            document.removeEventListener('click', closeSearch)
-        }
-    }, [])
+            document.removeEventListener("click", closeSearch);
+        };
+    }, []);
 
     const changeActiveElement = (ticker: string) => {
         const newStock = stockCard.map((value) => {
-            const isActive = value.ticker === ticker
+            const isActive = value.ticker === ticker;
             return {
                 ...value,
                 isActice: isActive
-            }
-        })
-        setStockCard(newStock)
-    }
+            };
+        });
+        setStockCard(newStock);
+    };
 
-    return <div className={TickerInputCss.TickerInput}>
-        <Input value = {inputText}  onChange={changeInput} placeholder = {placeholder}  />
-        <ViewResults
-            setTicker = {setTicker}
-            isOpen={isOpenView}
-            stockCard={stockCard}
-            setStockCard={setStockCard}
-            changeActiveElement={changeActiveElement}
-            setIsOpenView={setIsOpenView}
-            setInputText = {setInputText} 
-        />
-    </div>
-}
-export default TickerInput
+    return (
+        <div className={TickerInputCss.TickerInput}>
+            <Input
+                value={inputText}
+                onChange={changeInput}
+                placeholder={placeholder}
+            />
+            <ViewResults
+                setTicker={setTicker}
+                isOpen={isOpenView}
+                stockCard={stockCard}
+                setStockCard={setStockCard}
+                changeActiveElement={changeActiveElement}
+                setIsOpenView={setIsOpenView}
+                setInputText={setInputText}
+            />
+        </div>
+    );
+};
+export default TickerInput;

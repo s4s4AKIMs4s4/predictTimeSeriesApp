@@ -1,61 +1,61 @@
 .root {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-.mainContainer{
-  width:100vw;
-  flex-grow: 1;
-  overflow-x: hidden;
+.mainContainer {
+    width: 100vw;
+    flex-grow: 1;
+    overflow-x: hidden;
 }
 
 .InputContainer {
-  /* flex-grow: 8; */
-  max-width: 36rem;
-  height: 100%;
-  margin: auto;
+    /* flex-grow: 8; */
+    max-width: 36rem;
+    height: 100%;
+    margin: auto;
 }
-.staticContainer{
-  max-width: 50rem;
-  height: 100%;
-  margin: auto;
+.staticContainer {
+    max-width: 50rem;
+    height: 100%;
+    margin: auto;
 }
-.wizardContainer{
-  display: flex;
-  justify-content: center;
-  width:100%;
-  height:100%;
-  align-items: center;
+.wizardContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
 }
 
 .predictPageContainer {
-  flex-grow: 8;
-  max-width: 59rem;
-  display: flex;
-  justify-content: center;
-  margin: auto;
+    flex-grow: 8;
+    max-width: 59rem;
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }
-.StatickViewContainer{
-  width: 100vh;
-  display: flex;
-  justify-content: center;
+.StatickViewContainer {
+    width: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 .header {
-  max-height: calc(var(--chakra-fontSizes-2xl) + 31px);
-  width: 100vw;
-  overflow: hidden;
-  position: sticky;
-  top: 0;
-  flex-shrink: 0;
-  flex-grow: 1;
-  z-index: 90;
-  background-color: white;
+    max-height: calc(var(--chakra-fontSizes-2xl) + 31px);
+    width: 100vw;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    flex-shrink: 0;
+    flex-grow: 1;
+    z-index: 90;
+    background-color: white;
 }
 
 @media screen and (min-width: 48em) {
-  .header {
-    max-height: calc(var(--chakra-fontSizes-3xl) + 30px);
-  }
+    .header {
+        max-height: calc(var(--chakra-fontSizes-3xl) + 30px);
+    }
 }
