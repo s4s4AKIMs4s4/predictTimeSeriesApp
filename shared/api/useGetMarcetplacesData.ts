@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import useSWR from "swr";
 import { MockAppleData, MockCryptoData } from "../../mockData";
-import { TimeCryptoFunctionEnum, TimeStockFunctionEnum } from "./apiModel";
-import { API, fetcher } from "./apiUtils";
+import { fetcher } from "./apiUtils";
 import { pickApiForHandle } from "./useGetMarcetplaceData";
 import Stocks from "../../CompanyInformation/Stocks.json";
 
@@ -46,16 +44,9 @@ const useGetMarcetplacesData = (ticker: string, comparedTicker: string) => {
         fetcher
     );
 
-    // const dataTicker = MockAppleData
-    // const errorTicker = false
-    // const comparedDataTicker = MockCryptoData
-    // const comparedErrorTicker = false
-
     // TODO: rewrite to func style
     let noteError = isNoteErrorDate(dataTicker);
     let noteErrorCompared = isNoteErrorDate(comparedDataTicker);
-
-    // const spec = dataTicker ?  dataTicker['NOTE'] : false
 
     const isErrorDataTicker = errorTicker || noteError;
     const isComparedErrorTicker = comparedErrorTicker || noteErrorCompared;

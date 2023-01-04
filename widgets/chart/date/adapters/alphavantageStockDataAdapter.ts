@@ -1,13 +1,11 @@
+import { IApiData } from "../../../../shared/api/apiModel";
 import adapter from "./adapter";
 
-//TODO: fix any
-const alphavantageStockDataAdapter = (data: any) => {
+const alphavantageStockDataAdapter = (data: IApiData) => {
     const { serializeTime } = adapter();
-
     const StockEntyes = Object.entries(data["Weekly Time Series"]);
     return StockEntyes.map(([timeStr, value]) => {
         const { year, mounth, day } = serializeTime(timeStr);
-        console.log(year, mounth, day);
         const timestamp = new Date(year, mounth - 1, day).getTime();
         const open = parseFloat(value["1. open"]);
         const close = parseFloat(value["4. close"]);

@@ -1,52 +1,16 @@
-import { FC, MutableRefObject, useEffect, useState } from "react";
-import { IDataChart, IrenderChart } from "../../features/chart/useKlineChart";
+import React, { useEffect, useState } from "react";
+import useKlineChart from "../../features/chart/useKlineChart";
 import KlineChartCss from "./KlineChartCss.module.css";
 import { typeGraphEnum } from "./style";
 import { IMainTechnicalIndicatorTypes } from "./Analyzer";
-import {
-    Button,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    ModalOverlay
-} from "@chakra-ui/react";
-import {
-    CircularProgress,
-    Divider,
-    FormLabel,
-    Heading,
-    NumberDecrementStepper,
-    NumberIncrementStepper,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    Table,
-    TableCaption,
-    TableContainer,
-    Tbody,
-    Td,
-    Text,
-    Tfoot,
-    Th,
-    Thead,
-    Tr
-} from "@chakra-ui/react";
+import { Center, Divider, Text } from "@chakra-ui/react";
 
 export interface IPredictedChart {
     netWorkIsLoading: boolean;
     ticker: string;
     predictValues: number | null;
     windowSize: number;
-    chartData: {
-        currentChartData: IDataChart[];
-        drawPridctedValue: (predictValue: any, windowSize: any) => void;
-        currentChartObj: MutableRefObject<klinecharts.Chart>;
-        renderChart: ({ predictValue, graphType }: IrenderChart) => void;
-        isDataLoaded: boolean;
-    };
+    chartData: Omit<ReturnType<typeof useKlineChart>, "addToChartCircle">;
 }
 
 const Chart: React.FC<IPredictedChart> = ({
@@ -56,17 +20,9 @@ const Chart: React.FC<IPredictedChart> = ({
     ticker,
     windowSize
 }) => {
-    // const { currentChartObj, drawPridctedValue, currentChartData, renderChart, isDataLoaded } = useKlineChart(
-    //     {
-    //         ticker: ticker,
-    //         netWorkIsLoading
-    //     }
-    // )
-
     useEffect(() => {
-        if (predictValues) {
+        if (predictValues)
             chartData.drawPridctedValue(predictValues, windowSize);
-        }
     }, [predictValues]);
 
     useEffect(() => {
@@ -112,7 +68,7 @@ const Chart: React.FC<IPredictedChart> = ({
         }
     ]);
 
-    const AbHandler = (indicatorName: string) => (e: any) => {
+    const ChangeIndicatorHandler = (indicatorName: string) => (e: any) => {
         setMainTechnicalIndicatorTypes(
             mainTechnicalIndicatorTypes.map((indicator) => {
                 const isCurrentIndicator = indicator.name === indicatorName;
@@ -142,16 +98,7 @@ const Chart: React.FC<IPredictedChart> = ({
         );
     };
 
-    const handleChangeOPtion = (chartElement: typeGraphEnum) => () => {
-        const test = chartType.map((element) => {
-            // debugger
-            const isActice = element.value === chartElement;
-            return {
-                ...element,
-                isActice
-            };
-        });
-
+    const handleChangeChartType = (chartElement: typeGraphEnum) => () => {
         setChartType(
             chartType.map((element) => {
                 const isActice = element.value === chartElement;
@@ -174,15 +121,19 @@ const Chart: React.FC<IPredictedChart> = ({
                 }
             >
                 <div className={KlineChartCss.network__indicators}>
+                    {/* <span> Type: </span> */}
                     {chartType.map((typeElement) => {
                         return (
                             <span
+                                key={typeElement.value}
                                 className={
                                     typeElement.isActice
                                         ? KlineChartCss.indicator__active
                                         : ""
                                 }
-                                onClick={handleChangeOPtion(typeElement.value)}
+                                onClick={handleChangeChartType(
+                                    typeElement.value
+                                )}
                             >
                                 <Text fontSize="md">{typeElement.name}</Text>
                             </span>
@@ -190,7 +141,15 @@ const Chart: React.FC<IPredictedChart> = ({
                     })}
                 </div>
 
+                <Center
+                    className={KlineChartCss.divider_orientation_vertical}
+                    height="30px"
+                >
+                    <Divider orientation="vertical" />
+                </Center>
+
                 <div className={KlineChartCss.network__indicators}>
+                    {/* <span>Indicators: </span> */}
                     {mainTechnicalIndicatorTypes.map((indicator) => {
                         return (
                             <>
@@ -200,10 +159,12 @@ const Chart: React.FC<IPredictedChart> = ({
                                             ? KlineChartCss.indicator__active
                                             : ""
                                     }
-                                    onClick={AbHandler(indicator.name)}
+                                    onClick={ChangeIndicatorHandler(
+                                        indicator.name
+                                    )}
                                 >
                                     <Text fontSize="md">
-                                        {indicator.name.toLowerCase()}
+                                        {indicator.name.toUpperCase()}
                                     </Text>
                                 </span>
                             </>
@@ -220,4 +181,4 @@ const Chart: React.FC<IPredictedChart> = ({
         </>
     );
 };
-export default Chart;
+export default React.memo(Chart);

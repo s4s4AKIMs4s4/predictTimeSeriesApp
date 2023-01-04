@@ -1,5 +1,6 @@
 import { CircularProgress } from "@chakra-ui/react";
 import { ICircularProgres } from "./model";
+import React from "react";
 
 const CircularProgres: React.FC<ICircularProgres> = ({
     circularProgressValue
@@ -10,4 +11,4 @@ const CircularProgres: React.FC<ICircularProgres> = ({
         </>
     );
 };
-export default CircularProgress;
+export default React.memo(CircularProgress);

@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import Layout from "../entities/Layout";
 import { useEffect, useRef, useState } from "react";
 import KlineChart from "../widgets/chart/Analyzer";
 import { Heading } from "@chakra-ui/react";
@@ -38,6 +37,7 @@ const Statistic: React.FC = () => {
                     <KlineChart ref={ticker} />
                 </>
             );
+        //TODO: add sceleton
         if (parseUrlError === UrlErrorEnum.NOT_DEFINED) return <></>;
     };
 
@@ -46,7 +46,7 @@ const Statistic: React.FC = () => {
             <Head>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Header pageHeader="predictSeries" pathLink="/" isBack={true} />
+            <Header pageHeader="predict-series" pathLink="/" isBack={true} />
             <StatickContainer>
                 <div className={inputPage.inputViewWrapper}>
                     <div className={inputPage.inputView}>
@@ -57,7 +57,7 @@ const Statistic: React.FC = () => {
                             size="xl"
                             noOfLines={3}
                         >
-                            Рыночная информация для {ticker.current}
+                            Market Information for {ticker.current}
                         </Heading>
                         {renderChart()}
                     </div>

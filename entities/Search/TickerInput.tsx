@@ -1,5 +1,5 @@
 import { Input } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import TickerInputCss from "./TickerInputCss.module.css";
 import ViewResults from "./ViewCards/ViewResults";
 import useInput from "../../features/input/useInput";
@@ -12,8 +12,6 @@ const TickerInput: React.FC<ITickerInput> = ({ placeholder, setTicker }) => {
         setStockCard,
         isOpenView,
         setIsOpenView,
-        searchedCompany,
-        setSearchedCompany,
         changeInput,
         inputText,
         setInputText
@@ -67,4 +65,4 @@ const TickerInput: React.FC<ITickerInput> = ({ placeholder, setTicker }) => {
         </div>
     );
 };
-export default TickerInput;
+export default React.memo(TickerInput);

@@ -1,12 +1,5 @@
-import KlineChartCss from "../Search/KlineChartCss.module.css";
-import {
-    Table,
-    Tbody,
-    Td,
-    Th,
-    Thead,
-    Tr
-} from "@chakra-ui/react";
+import React from "react";
+import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 interface IResultPredictedTable {
     predictValues: number;
@@ -22,24 +15,24 @@ const ResultPredictedTable: React.FC<IResultPredictedTable> = ({
             <Table variant="simple">
                 <Thead>
                     <Tr>
-                        <Th>Название параметра</Th>
+                        <Th>Parameter name</Th>
                         <Th
                             style={{
                                 display: "flex",
                                 justifyContent: "flex-end"
                             }}
                         >
-                            Значение
+                            Value
                         </Th>
                     </Tr>
                 </Thead>
                 <Tbody>
                     <Tr>
-                        <Td>Спрогнозированное значение</Td>
+                        <Td>Predicted value</Td>
                         <Td isNumeric> {predictValues.toFixed(2)}</Td>
                     </Tr>
                     <Tr>
-                        <Td>Значение функции потерь</Td>
+                        <Td>Loss function</Td>
                         <Td isNumeric>{lastLoss.toFixed(7)} </Td>
                     </Tr>
                 </Tbody>
@@ -47,4 +40,4 @@ const ResultPredictedTable: React.FC<IResultPredictedTable> = ({
         </>
     );
 };
-export default ResultPredictedTable;
+export default React.memo(ResultPredictedTable);

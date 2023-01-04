@@ -1,8 +1,4 @@
-import {
-    useContext,
-    useEffect,
-    useState
-} from "react";
+import { useEffect, useState } from "react";
 import useRLNetwork from "../../features/neraulNetwork/useRLNetwork";
 import useKlineChart from "../../features/chart/useKlineChart";
 import React from "react";
@@ -17,7 +13,6 @@ import {
     Thead,
     Tr
 } from "@chakra-ui/react";
-import { TickerContext } from "../../Context/Models";
 
 interface IDataChart {
     open: number;
@@ -36,14 +31,11 @@ export interface ChartProps {
 }
 
 const KlineChart = (props, ref) => {
-    const { ticker, setTicker, setCompatedTicker, comparedTicker } =
-        useContext(TickerContext);
-
     useEffect(() => {}, []);
 
     const [netWorkIsLoading, setNetWorkIsLoading] = useState<boolean>(true);
 
-    const { drawPridctedValue, currentChartData, renderChart } = useKlineChart({
+    const { currentChartData } = useKlineChart({
         ticker: props.ticker,
         netWorkIsLoading
     });
@@ -65,12 +57,6 @@ const KlineChart = (props, ref) => {
         console.log(progressValue);
         setCircularProgressValue(progressValue);
     };
-
-    useEffect(() => {
-        // if (predictValues !== null && !netWorkIsLoading) {
-        //     renderChart(predictValues)
-        // }
-    }, [netWorkIsLoading, predictValues]);
 
     useEffect(() => {
         if (!currentChartData) return;

@@ -1,6 +1,7 @@
 import { Badge, Box, Heading, Image } from "@chakra-ui/react";
 import CompanySearchCss from "./CompanySearchCss.module.css";
 import { IStockCard } from "./model";
+import React from "react";
 
 const CompanySearch: React.FC<IStockCard> = ({
     isActice,
@@ -36,4 +37,4 @@ const CompanySearch: React.FC<IStockCard> = ({
         </div>
     );
 };
-export default CompanySearch;
+export default React.memo(CompanySearch);

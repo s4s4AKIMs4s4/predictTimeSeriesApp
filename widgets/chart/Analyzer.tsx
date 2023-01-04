@@ -1,33 +1,15 @@
-import {
-    MutableRefObject,
-    useEffect,
-    useState
-} from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 import useRLNetwork from "../../features/neraulNetwork/useRLNetwork";
 import useKlineChart from "../../features/chart/useKlineChart";
 import React from "react";
-import {
-    Heading,
-} from "@chakra-ui/react";
-import {
-    Button,
-} from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import KlineChartCss from "./KlineChartCss.module.css";
 import Chart from "./FinancialChart";
 import CommonInformationTable from "../../entities/tables/CommonInformationTable";
 import SettingML from "../../entities/SettingML";
 import ResultPredictedTable from "../../entities/tables/ResultPredictedTable";
 import NumberOfEpochLoader from "../loaders/NumberOfEpochLoader";
-
-interface IDataChart {
-    open: number;
-    close: number;
-    high: number;
-    low: number;
-    timestamp: number;
-    volue?: number;
-    turnover?: number;
-}
 
 export interface ChartProps {
     isPredicted: boolean;
@@ -40,7 +22,7 @@ export interface IMainTechnicalIndicatorTypes {
     name: string;
 }
 
-const KlineChart = (props, ref) => {
+const KlineChart = (_, ref) => {
     const [netWorkIsLoading, setNetWorkIsLoading] = useState<boolean>(false);
     const {
         currentChartObj,
@@ -75,12 +57,7 @@ const KlineChart = (props, ref) => {
     const calculateChartProgress = (epoch, log, params) => {
         setEpoch(epoch + 1);
         const progressValue = ((epoch + 1) * 100) / inputEpoch;
-        console.log(epoch);
-        //@ts-ignore
         setLastLoss(log.loss);
-        console.log(log);
-        console.log(params);
-        console.log(progressValue);
         setCircularProgressValue(progressValue);
     };
 
@@ -110,7 +87,7 @@ const KlineChart = (props, ref) => {
                 size="sm"
                 noOfLines={3}
             >
-                График
+                Schedule
             </Heading>
 
             <Chart
@@ -135,7 +112,7 @@ const KlineChart = (props, ref) => {
                         size="sm"
                         noOfLines={3}
                     >
-                        Общая рыночная информация
+                        General market information
                     </Heading>
 
                     <CommonInformationTable
@@ -148,7 +125,7 @@ const KlineChart = (props, ref) => {
                         size="sm"
                         noOfLines={3}
                     >
-                        Создать нейросеть
+                        Create a neural network
                     </Heading>
                     <SettingML
                         {...{
@@ -170,8 +147,7 @@ const KlineChart = (props, ref) => {
                         size="md"
                         onClick={handleOpenModalClick}
                     >
-                        {" "}
-                        Обучить сеть{" "}
+                        Train the network
                     </Button>
                     <div></div>
 
@@ -198,4 +174,4 @@ const KlineChart = (props, ref) => {
         </>
     );
 };
-export default React.forwardRef<string | null, any>(KlineChart);
+export default React.forwardRef<string | null, unknown>(KlineChart);

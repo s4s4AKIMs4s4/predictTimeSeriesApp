@@ -1,3 +1,4 @@
+import React from "react";
 import useRLNetwork from "../features/neraulNetwork/useRLNetwork";
 import KlineChartCss from "../widgets/chart/KlineChartCss.module.css";
 import {
@@ -81,4 +82,4 @@ const SettingML: React.FC<ISettingML> = (props) => {
         </>
     );
 };
-export default SettingML;
+export default React.memo(SettingML);

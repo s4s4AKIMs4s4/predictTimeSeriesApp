@@ -1,20 +1,8 @@
 import {
-    CircularProgress,
-    Divider,
-    FormLabel,
-    Heading,
-    NumberDecrementStepper,
-    NumberIncrementStepper,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
     Table,
-    TableCaption,
     TableContainer,
     Tbody,
     Td,
-    Text,
-    Tfoot,
     Th,
     Thead,
     Tr
@@ -22,6 +10,7 @@ import {
 import KlineChartCss from "../../widgets/chart/KlineChartCss.module.css";
 import { IDataChart } from "../../features/chart/useKlineChart";
 import useStaticValues from "../../features/metrics.tsx/useStaticValues";
+import React from "react";
 
 export interface ICommonInformationTable {
     currentChartData: IDataChart[];
@@ -39,41 +28,41 @@ const CommonInformationTable: React.FC<ICommonInformationTable> = ({
                 <Table variant="simple">
                     <Thead>
                         <Tr>
-                            <Th>Название параметра</Th>
+                            <Th>Parameter name</Th>
                             <Th
                                 style={{
                                     display: "flex",
                                     justifyContent: "flex-end"
                                 }}
                             >
-                                Значение
+                                Value
                             </Th>
                         </Tr>
                     </Thead>
                     <Tbody>
                         <Tr>
-                            <Td>Мода</Td>
+                            <Td>Mode</Td>
                             <Td isNumeric> {getMSE("close").toFixed(2)}</Td>
                         </Tr>
                         <Tr>
-                            <Td>Среднее</Td>
+                            <Td>Average</Td>
                             <Td isNumeric>{getMode("close").toFixed(2)} </Td>
                         </Tr>
                         <Tr>
-                            <Td>Максимальная цена закрытия</Td>
+                            <Td>Maximum closing price</Td>
                             <Td isNumeric>{getMax()} </Td>
                         </Tr>
                         <Tr>
-                            <Td> Минимальная цена закрытия </Td>
+                            <Td> Minimum closing price </Td>
                             <Td isNumeric>{getMin()} </Td>
                         </Tr>
                         <Tr>
-                            <Td> Количество сделок </Td>
+                            <Td> Number of values in the chart </Td>
                             <Td isNumeric>{amountOfDeal()} </Td>
                         </Tr>
 
                         <Tr>
-                            <Td> Начало торгов </Td>
+                            <Td> Start of trading </Td>
                             <Td isNumeric>{getTimeAgo()} </Td>
                         </Tr>
                     </Tbody>
@@ -82,4 +71,4 @@ const CommonInformationTable: React.FC<ICommonInformationTable> = ({
         </>
     );
 };
-export default CommonInformationTable;
+export default React.memo(CommonInformationTable);

@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 400px;
+    /* width: 400px; */
     row-gap: 10px;
 }
 .wizardCard__button {

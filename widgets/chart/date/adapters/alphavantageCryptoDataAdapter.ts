@@ -1,7 +1,7 @@
+import { IApiData } from "../../../../shared/api/apiModel";
 import adapter from "./adapter";
 
-//TODO: fix any
-const alphavantageCryptoDataAdapter = (data: any) => {
+const alphavantageCryptoDataAdapter = (data: IApiData) => {
     const { serializeTime } = adapter();
 
     const cryptoEntyes = Object.entries(

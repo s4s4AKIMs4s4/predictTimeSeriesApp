@@ -1,12 +1,14 @@
 import { Box, Heading } from "@chakra-ui/react";
 import Link from "next/link";
 import styles from "./layout.module.css";
+import React from "react";
 
 interface IHeaderProps {
     pageHeader: string;
     pathLink: string;
     isBack?: boolean;
 }
+
 const Header = ({ pageHeader, pathLink, isBack }: IHeaderProps) => {
     return (
         <>
@@ -28,4 +30,4 @@ const Header = ({ pageHeader, pathLink, isBack }: IHeaderProps) => {
         </>
     );
 };
-export default Header;
+export default React.memo(Header);

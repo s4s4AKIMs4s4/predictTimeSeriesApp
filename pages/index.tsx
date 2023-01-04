@@ -1,6 +1,5 @@
 import Head from "next/head";
 import inputPageCSS from "./inputPage.module.css";
-import TickerProvider from "../Context/Providers/TickerProvider";
 import Layout from "../entities/Layout";
 import Header from "../entities/Header";
 import { Button, Heading, Text } from "@chakra-ui/react";
@@ -22,20 +21,20 @@ export default function InputPage() {
         {
             imageSrc: "/images/wizard-step-1.png",
             description:
-                "Изучить финансовое состояние и историю торгов по выбранной акции",
+                "Study the financial condition and trading history of the selected stock",
             isActice: true,
             index: 1
         },
         {
-            imageSrc: "/images/wizard-step-2.png",
-            description: "Изучить общую статистику по торгам",
+            imageSrc: "/images/Screenshot_10.png",
+            description: "View general trading statistics",
             isActice: false,
             index: 2
         },
         {
-            imageSrc: "/images/wizard-step-3.png",
+            imageSrc: "/images/Screenshot_9.png",
             description:
-                "На основе полученой информации настроить нейросеть и сделать прогноз на следующий день",
+                "Based on the information received, set up a neural network and make a forecast for the next day",
             isActice: false,
             index: 3
         }
@@ -60,8 +59,8 @@ export default function InputPage() {
             <>
                 <Image
                     src={currentActiveCard.imageSrc}
-                    height={400}
-                    width={400}
+                    height={350}
+                    width={350}
                     alt="parametrs"
                 />
                 <div>
@@ -75,7 +74,7 @@ export default function InputPage() {
                                 colorScheme="teal"
                                 size="lg"
                             >
-                                Выбрать тикер для прогноза
+                                Choose a ticker for the forecast
                             </Button>
                         ) : (
                             <Button
@@ -83,7 +82,7 @@ export default function InputPage() {
                                 colorScheme="teal"
                                 size="lg"
                             >
-                                Дальше
+                                Next
                             </Button>
                         )}
                     </div>
@@ -107,7 +106,7 @@ export default function InputPage() {
                         size="xl"
                         noOfLines={3}
                     >
-                        Приложение позволяет
+                        The application allows
                     </Heading>
                     <div className={inputPageCSS.wizardCard}>
                         {wizardCardJsx}

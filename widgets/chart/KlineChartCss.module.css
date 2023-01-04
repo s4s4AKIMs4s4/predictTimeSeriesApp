@@ -20,6 +20,7 @@
     flex-direction: row;
     column-gap: 5px;
     justify-content: space-between;
+    overflow: hidden;
 }
 .indicator {
     color: #4a5568;
@@ -38,4 +39,12 @@
 }
 .chartHeader {
     margin-bottom: 10px;
+}
+.divider_orientation_vertical {
+    display: none !important;
+}
+@media (max-width: 433px) {
+    .divider_orientation_vertical {
+        display: flex !important;
+    }
 }
