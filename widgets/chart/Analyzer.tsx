@@ -87,7 +87,7 @@ const KlineChart = (_, ref) => {
                 size="sm"
                 noOfLines={3}
             >
-                Schedule
+                Chart
             </Heading>
 
             <Chart
