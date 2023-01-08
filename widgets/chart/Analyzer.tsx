@@ -146,6 +146,7 @@ const KlineChart = (_, ref) => {
                         colorScheme="teal"
                         size="md"
                         onClick={handleOpenModalClick}
+                        data-testid={"train-network-button"}
                     >
                         Train the network
                     </Button>
@@ -164,6 +165,7 @@ const KlineChart = (_, ref) => {
                     {!netWorkIsLoading && predictValues && (
                         <>
                             <ResultPredictedTable
+                                data-testid={"reult-table"}
                                 lastLoss={lastLoss}
                                 predictValues={predictValues}
                             />

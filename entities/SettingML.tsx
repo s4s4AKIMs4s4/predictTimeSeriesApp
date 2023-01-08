@@ -21,6 +21,7 @@ const SettingML: React.FC<ISettingML> = (props) => {
             <div className={KlineChartCss.network__form}>
                 <FormLabel>Window size:</FormLabel>
                 <NumberInput
+                    data-testid={"window-size"}
                     onChange={(valueString) =>
                         props.setWindowSize(Number(valueString))
                     }
@@ -40,6 +41,7 @@ const SettingML: React.FC<ISettingML> = (props) => {
                         props.setInputEpoch(Number(valueString))
                     }
                     value={props.inputEpoch}
+                    data-testid={"input-epoch"}
                     max={50}
                 >
                     <NumberInputField />
@@ -51,6 +53,7 @@ const SettingML: React.FC<ISettingML> = (props) => {
 
                 <FormLabel>Learning rate:</FormLabel>
                 <NumberInput
+                    data-testid={"learning-rate"}
                     onChange={(valueString) =>
                         props.setInputLearningrate(Number(valueString))
                     }
@@ -66,6 +69,7 @@ const SettingML: React.FC<ISettingML> = (props) => {
 
                 <FormLabel>Number of RNN blocks:</FormLabel>
                 <NumberInput
+                    data-testid={"RNN-blocks"}
                     onChange={(valueString) =>
                         props.setInputHiddenlayers(Number(valueString))
                     }

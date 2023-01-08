@@ -95,6 +95,8 @@ const useKlineChart = ({ ticker, netWorkIsLoading }: IKlineProps) => {
 
     const genetateChartData = () => {
         const Kdata = generateChartDate(data, isCrypro.current);
+        console.log("Kdata");
+        console.log(Kdata);
         setCurrentChartData(Kdata.reverse());
         setIsDataLoaded(true);
     };

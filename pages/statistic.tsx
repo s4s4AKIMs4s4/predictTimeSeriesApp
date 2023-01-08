@@ -8,13 +8,22 @@ import { UrlErrorEnum } from "./predict";
 import inputPage from "./inputPage.module.css";
 import StatickContainer from "../entities/Containers/StaticContainer";
 
-const Statistic: React.FC = () => {
+export interface IStatistic {
+    ticker?: string;
+}
+
+const Statistic: React.FC<IStatistic> = (props) => {
     const ticker = useRef<string | null>(null);
     const [parseUrlError, setParseUrlError] = useState<UrlErrorEnum>(
         UrlErrorEnum.NOT_DEFINED
     );
 
     useEffect(() => {
+        if (props.ticker) {
+            ticker.current = props.ticker;
+            setParseUrlError(UrlErrorEnum.CORRECT);
+            return;
+        }
         const href = window.location.href;
         if (!href.match("ticker") && !href.match("=")) {
             setParseUrlError(UrlErrorEnum.ERROR);
@@ -56,6 +65,7 @@ const Statistic: React.FC = () => {
                             textAlign={"center"}
                             size="xl"
                             noOfLines={3}
+                            data-testid={"market"}
                         >
                             Market Information for {ticker.current}
                         </Heading>

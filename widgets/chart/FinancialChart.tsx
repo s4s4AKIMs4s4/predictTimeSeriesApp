@@ -26,6 +26,8 @@ const Chart: React.FC<IPredictedChart> = ({
     }, [predictValues]);
 
     useEffect(() => {
+        console.log("chartData.isDataLoaded");
+        console.log(chartData.isDataLoaded);
         if (chartData.isDataLoaded) chartData.renderChart({});
     }, [chartData.isDataLoaded]);
 

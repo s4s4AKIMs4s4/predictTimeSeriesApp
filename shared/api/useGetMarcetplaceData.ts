@@ -1,4 +1,6 @@
 import useSWR from "swr";
+import fetch from "node-fetch";
+
 import { TimeCryptoFunctionEnum, TimeStockFunctionEnum } from "./apiModel";
 import { API, fetcher } from "./apiUtils";
 import Stocks from "../../CompanyInformation/Stocks.json";

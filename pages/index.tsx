@@ -52,6 +52,10 @@ export default function InputPage() {
             })
         );
     };
+    const isLastStep = useMemo(() => {
+        const currentActiveCard = wizardSteps.find((step) => step.isActice);
+        return currentActiveCard.index === wizardSteps.length;
+    }, [wizardSteps]);
 
     const wizardCardJsx = useMemo(() => {
         const currentActiveCard = wizardSteps.find((step) => step.isActice);
@@ -64,27 +68,26 @@ export default function InputPage() {
                     alt="parametrs"
                 />
                 <div>
-                    <Text align="center" fontSize="lg">
+                    <Text
+                        data-testid={"description"}
+                        align="center"
+                        fontSize="lg"
+                    >
                         {currentActiveCard.description}
                     </Text>
                     <div className={inputPageCSS.wizardCard__button}>
-                        {currentActiveCard.index === wizardSteps.length ? (
-                            <Button
-                                onClick={navigateToSelectPage}
-                                colorScheme="teal"
-                                size="lg"
-                            >
-                                Choose a ticker for the forecast
-                            </Button>
-                        ) : (
-                            <Button
-                                onClick={getNextStep}
-                                colorScheme="teal"
-                                size="lg"
-                            >
-                                Next
-                            </Button>
-                        )}
+                        <Button
+                            onClick={
+                                isLastStep ? navigateToSelectPage : getNextStep
+                            }
+                            colorScheme="teal"
+                            size="lg"
+                            data-testid={"next-button"}
+                        >
+                            {isLastStep
+                                ? "Choose a ticker for the forecast"
+                                : "Next"}
+                        </Button>
                     </div>
                 </div>
             </>
@@ -105,6 +108,7 @@ export default function InputPage() {
                         textAlign={"center"}
                         size="xl"
                         noOfLines={3}
+                        role={"heading"}
                     >
                         The application allows
                     </Heading>
