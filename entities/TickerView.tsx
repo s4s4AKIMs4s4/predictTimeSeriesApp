@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import Stocks from "../CompanyInformation/Stocks.json";
 import TickerSearch from "./Search/ViewCards/TickerSearch";
 import { Heading, Input } from "@chakra-ui/react";
@@ -12,6 +12,10 @@ const TickerView: React.FC = () => {
     const { navigateToStatistickPage } = useNavigate();
     const [query, setQuery] = useState<string>("");
     const { filtredStockList, filterStocks } = useSearch();
+    const inputRef = useRef<HTMLInputElement>()
+    useEffect(() => {
+        inputRef.current.focus()
+    },[])
 
     const tickerClick =
         (ticker: string) => (e: React.MouseEvent<HTMLDivElement>) => {
@@ -48,6 +52,7 @@ const TickerView: React.FC = () => {
 
             <div className={TickerViewCss.TickerPickWrapper}>
                 <Input
+                    ref={inputRef}
                     onChange={queryHandler}
                     value={query}
                     placeholder="type ticker or company name"
