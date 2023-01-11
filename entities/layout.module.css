@@ -11,7 +11,6 @@
 }
 
 .InputContainer {
-    /* flex-grow: 8; */
     max-width: 36rem;
     height: 100%;
     margin: auto;
@@ -30,7 +29,7 @@
 }
 
 .predictPageContainer {
-    flex-grow: 8;
+    flex-grow: 1;
     max-width: 59rem;
     display: flex;
     justify-content: center;
@@ -52,6 +51,10 @@
     flex-grow: 1;
     z-index: 90;
     background-color: white;
+    border-bottom: 2px solid #ededed;
+}
+.header__linkWrapper{
+    height:100%;
 }
 
 @media screen and (min-width: 48em) {
